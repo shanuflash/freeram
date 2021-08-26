@@ -5,6 +5,6 @@ If WScript.Arguments.length = 0 Then
       WScript.ScriptFullName & Chr(34) & " uac", "", "runas", 1
 Else
    Set WshShell = CreateObject("WScript.Shell") 
-   WshShell.Run chr(34) & "C:\Users\shanu\Downloads\Tweaks\final.bat" & Chr(34), 0
+   WshShell.Run chr(34) & "C:\Users\shanu\Downloads\Tweaks\freeram.bat" & Chr(34), 0
    Set WshShell = Nothing
 End If
