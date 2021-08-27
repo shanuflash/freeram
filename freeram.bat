@@ -1,6 +1,6 @@
-move data\freeram.vbs "%USERPROFILE%\Start Menu\Programs\Startup"
-move data\freeram.exe "%USERPROFILE%\Start Menu\Programs\Startup"
-move RAMMap.exe C:\Windows
+move "data\freeram.vbs" "%USERPROFILE%\Start Menu\Programs\Startup"
+move "freeram.exe" "%USERPROFILE%\Start Menu\Programs\Startup"
+move "data\RAMMap.exe" C:\Windows
 @echo off
 for /l %%i in (1, 1, 11) do (
 	rammap -ew
