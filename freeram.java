@@ -41,7 +41,7 @@ public class freeram
         
     }
     public static void main(String[] args) throws IOException {
-        
+
         File zdir = new File("C:\\FreeRam");
         if(!zdir.exists()) zdir.mkdirs();
 
@@ -61,7 +61,7 @@ public class freeram
         String Path = "C:\\FreeRam\\RamMap.zip";
         String Dir = "C:\\FreeRam"; 
         unzip(Path, Dir);
-        Process process = Runtime.getRuntime().exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
+        Runtime.getRuntime().exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
         }
     }
 }
