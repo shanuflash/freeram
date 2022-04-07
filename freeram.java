@@ -54,6 +54,7 @@ public class freeram
         String Path = "C:\\FreeRam\\RamMap.zip";
         String Dir = "C:\\FreeRam"; 
         unzip(Path, Dir);
+        Process process = Runtime.getRuntime().exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
         }
     }
 }
