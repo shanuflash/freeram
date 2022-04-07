@@ -7,7 +7,10 @@ public class freeram
 
         URL fetchWebsite = new URL("https://download.sysinternals.com/files/RAMMap.zip");
         ReadableByteChannel readableByteChannel = Channels.newChannel(fetchWebsite.openStream());
-        try (FileOutputStream fos = new FileOutputStream("C:\\Users\\shanu\\Downloads\\RamMap.zip")) {
+
+        File zdir = new File("C:\\FreeRam");
+        if(!zdir.exists()) zdir.mkdirs();
+
+        try (FileOutputStream fos = new FileOutputStream("C:\\FreeRam\\RamMap.zip")) {
             fos.getChannel().transferFrom(readableByteChannel, 0, Long.MAX_VALUE);
-        }
 }
