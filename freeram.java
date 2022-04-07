@@ -17,7 +17,7 @@ public class freeram
             while(ze != null)
             {
                 String fileName = ze.getName();
-                File newFile = new File(Dir + File+ fileName);
+                File newFile = new File(Dir + File.separator + fileName);
                 System.out.println("Unzipping to "+newFile.getAbsolutePath());
                 new File(newFile.getParent()).mkdirs();
                 FileOutputStream fos = new FileOutputStream(newFile);
