@@ -1,7 +1,7 @@
 # FreeRam
 **You can download free ram? (maybe)**
 
-Designed and coded by @shanuflash and @viignessh<br>
+Designed and coded by @shanuflash<br>
 Thanks @Microsoft for their amazing RAMMap.exe
 
 ## How to run?<br>
