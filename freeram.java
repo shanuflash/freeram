@@ -9,6 +9,8 @@ import java.awt. *;
 import java.lang.Thread;
 
 public class freeram {
+    
+    
     public static void wait(int ms) {
         try {
             Thread.sleep(ms);
@@ -18,6 +20,7 @@ public class freeram {
                 .interrupt();
         }
     }
+
 
     private static void unzip(String Path, String Dir) {
         File dir = new File(Dir);
@@ -52,6 +55,8 @@ public class freeram {
             e.printStackTrace();
         }
     }
+
+
     public static void main(String[] args)throws IOException {
 
         File zdir = new File("C:\\FreeRam");
@@ -83,6 +88,7 @@ public class freeram {
         String Path = "C:\\FreeRam\\RamMap.zip";
         String Dir = "C:\\FreeRam";
         unzip(Path, Dir);
+
 
         //  Swing  UI
         JFrame f = new JFrame("Free Ram");
@@ -117,6 +123,7 @@ public class freeram {
         f.setLocationRelativeTo(null);
         f.setVisible(true);
 
+
         //  System  Tray
         if (!SystemTray.isSupported()) {
             System
@@ -124,11 +131,10 @@ public class freeram {
                 .println("System tray is not supported !!! ");
             return;
         }
-
         SystemTray systemTray = SystemTray.getSystemTray();
         Image image = Toolkit
             .getDefaultToolkit()
-            .getImage("ram.png");
+            .getImage("bin/ram.png");
         PopupMenu trayPopupMenu = new PopupMenu();
         MenuItem action = new MenuItem("Show");
         action.addActionListener(new ActionListener() {
@@ -153,6 +159,7 @@ public class freeram {
             awtException.printStackTrace();
         }
 
+
         //  RAMMAP  exec
         Runtime
             .getRuntime()
@@ -167,6 +174,5 @@ public class freeram {
         } catch (IOException c) {
             c.printStackTrace();
         }
-
     }
 }
