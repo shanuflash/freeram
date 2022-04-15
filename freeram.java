@@ -98,7 +98,6 @@ public class freeram {
         //         tt.printStackTrace();
         //     }
         // });
-        // f.add(t);
         b.setBounds(65, 14, 100, 30);
         b.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -111,12 +110,46 @@ public class freeram {
                 }
             }
         });
+        // f.add(t);
         f.add(b);
         f.setSize(245, 100);
         f.setLayout(null);
         f.setVisible(true);
-        
-        
+
+        //  System  Tray
+        if (!SystemTray.isSupported()) {
+            System
+                .out
+                .println("System tray is not supported !!! ");
+            return;
+        }
+
+        SystemTray systemTray = SystemTray.getSystemTray();
+        Image image = Toolkit
+            .getDefaultToolkit()
+            .getImage("ram.ico");
+        PopupMenu trayPopupMenu = new PopupMenu();
+        MenuItem action = new MenuItem("Show");
+        action.addActionListener(new ActionListener() {
+            @Override public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+        trayPopupMenu.add(action);
+        MenuItem close = new MenuItem("Close");
+        close.addActionListener(new ActionListener() {
+            @Override public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+        trayPopupMenu.add(close);
+        TrayIcon trayIcon = new TrayIcon(image, "FreeRam", trayPopupMenu);
+        trayIcon.setImageAutoSize(true);
+
+        try {
+            systemTray.add(trayIcon);
+        }}
+
         //  RAMMAP  exec
         Runtime
             .getRuntime()
