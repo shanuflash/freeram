@@ -18,7 +18,7 @@ public class freeram {
                 .interrupt();
         }
     }
-    
+
     private static void unzip(String Path, String Dir) {
         File dir = new File(Dir);
         if (!dir.exists()) 
@@ -97,7 +97,7 @@ public class freeram {
         //     } catch (IOException tt) {
         //         tt.printStackTrace();
         //     }
-        // });
+        //});
         b.setBounds(65, 14, 100, 30);
         b.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -114,6 +114,7 @@ public class freeram {
         f.add(b);
         f.setSize(245, 100);
         f.setLayout(null);
+        f.setLocationRelativeTo(null);
         f.setVisible(true);
 
         //  System  Tray
