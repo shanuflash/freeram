@@ -84,6 +84,39 @@ public class freeram {
         String Dir = "C:\\FreeRam";
         unzip(Path, Dir);
 
+        //  Swing  UI
+        JFrame f = new JFrame("Free Ram");
+        JButton b = new JButton("Click Here");
+        // JTextField t = new JTextField("Test");
+        // t.setBounds(10, 10, 100, 100);
+        // t.addActionListener(new ActionListener() {
+        //     try {
+        //         System
+        //             .out
+        //             .println("test");
+        //     } catch (IOException tt) {
+        //         tt.printStackTrace();
+        //     }
+        // });
+        // f.add(t);
+        b.setBounds(65, 14, 100, 30);
+        b.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Runtime
+                        .getRuntime()
+                        .exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
+                } catch (IOException a) {
+                    a.printStackTrace();
+                }
+            }
+        });
+        f.add(b);
+        f.setSize(245, 100);
+        f.setLayout(null);
+        f.setVisible(true);
+        
+        
         //  RAMMAP  exec
         Runtime
             .getRuntime()
