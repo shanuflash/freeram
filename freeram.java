@@ -18,7 +18,7 @@ public class freeram {
                 .interrupt();
         }
     }
-
+    
     private static void unzip(String Path, String Dir) {
         File dir = new File(Dir);
         if (!dir.exists()) 
@@ -127,19 +127,19 @@ public class freeram {
         SystemTray systemTray = SystemTray.getSystemTray();
         Image image = Toolkit
             .getDefaultToolkit()
-            .getImage("ram.ico");
+            .getImage("ram.png");
         PopupMenu trayPopupMenu = new PopupMenu();
         MenuItem action = new MenuItem("Show");
         action.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
-                
+                f.setVisible(true);
             }
         });
         trayPopupMenu.add(action);
         MenuItem close = new MenuItem("Close");
         close.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
-                
+                System.exit(0);
             }
         });
         trayPopupMenu.add(close);
@@ -148,7 +148,9 @@ public class freeram {
 
         try {
             systemTray.add(trayIcon);
-        }}
+        } catch (AWTException awtException) {
+            awtException.printStackTrace();
+        }
 
         //  RAMMAP  exec
         Runtime
