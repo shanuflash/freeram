@@ -120,6 +120,8 @@ public class freeram {
         f.add(b);
         f.setSize(245, 100);
         f.setLayout(null);
+        ImageIcon img = new ImageIcon("bin\\ram.png");
+        f.setIconImage(img.getImage());
         f.setLocationRelativeTo(null);
         f.setVisible(true);
 
