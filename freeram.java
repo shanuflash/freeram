@@ -9,8 +9,7 @@ import java.awt. *;
 import java.lang.Thread;
 
 public class freeram {
-    
-    
+
     public static void wait(int ms) {
         try {
             Thread.sleep(ms);
@@ -20,7 +19,6 @@ public class freeram {
                 .interrupt();
         }
     }
-
 
     private static void unzip(String Path, String Dir) {
         File dir = new File(Dir);
@@ -56,7 +54,6 @@ public class freeram {
         }
     }
 
-
     public static void main(String[] args)throws IOException {
 
         File zdir = new File("C:\\FreeRam");
@@ -89,21 +86,13 @@ public class freeram {
         String Dir = "C:\\FreeRam";
         unzip(Path, Dir);
 
-
         //  Swing  UI
         JFrame f = new JFrame("Free Ram");
         JButton b = new JButton("Click Here");
-        // JTextField t = new JTextField("Test");
-        // t.setBounds(10, 10, 100, 100);
-        // t.addActionListener(new ActionListener() {
-        //     try {
-        //         System
-        //             .out
-        //             .println("test");
-        //     } catch (IOException tt) {
-        //         tt.printStackTrace();
-        //     }
-        //});
+        // JTextField t = new JTextField("Test"); t.setBounds(10, 10, 100, 100);
+        // t.addActionListener(new ActionListener() {     try {         System
+        // .out             .println("test");     } catch (IOException tt) {
+        // tt.printStackTrace();     } });
         b.setBounds(65, 14, 100, 30);
         b.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -124,7 +113,6 @@ public class freeram {
         f.setIconImage(img.getImage());
         f.setLocationRelativeTo(null);
         f.setVisible(true);
-
 
         //  System  Tray
         if (!SystemTray.isSupported()) {
@@ -160,7 +148,6 @@ public class freeram {
         } catch (AWTException awtException) {
             awtException.printStackTrace();
         }
-
 
         //  RAMMAP  exec
         Runtime
