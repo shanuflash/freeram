@@ -1,6 +1,7 @@
 import etc.*;
 
 import java.io. *;
+import com.formdev.flatlaf.*;
 import javax.swing. *;
 import java.awt.event. *;
 import java.awt. *;
@@ -14,7 +15,15 @@ public class freeram {
         unzip u1 = new unzip();
         u1.unzip(Path, Dir);
 
-        //  Swing  UI
+
+        //LAF
+        try {
+            UIManager.setLookAndFeel( new FlatDarkLaf() );
+        } catch( Exception ex ) {
+            System.err.println( "Failed to initialize LaF" );
+        }
+
+
         //  Frame
         JFrame f = new JFrame("Free Ram");
         f.setSize(315, 200);
@@ -71,8 +80,6 @@ public class freeram {
             }
         });
         f.add(b1);
-
-        
         //  System  Tray
         if (!SystemTray.isSupported()) {
             System
