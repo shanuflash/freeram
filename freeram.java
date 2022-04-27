@@ -12,12 +12,20 @@ public class freeram {
     public static void main(String[] args)throws IOException {
         File fi1 = new File("C:\\FreeRam\\freeram.ini");
         fi1.createNewFile();
+
         download d1 = new download();
         d1.download();
+
         String Path = "C:\\FreeRam\\RamMap.zip";
         String Dir = "C:\\FreeRam";
         unzip u1 = new unzip();
         u1.unzip(Path, Dir);
+        BufferedReader br1 = new BufferedReader(
+            new FileReader("C:\\Freeram\\freeram.ini")
+        );
+        String timestring = br1.readLine();
+        br1.close();
+        int time = Integer.valueOf(timestring);
 
         //LAF
         try {
@@ -48,8 +56,8 @@ public class freeram {
         f.add(l1);
 
         //  TextField t1
-        JTextField t1 = new JTextField("60");
-        t1.setBounds(20, 55, 250, 35);
+        JTextField t1 = new JTextField(timestring);
+        t1.setBounds(20, 55, 260, 35);
         Font font2 = new Font("Roboto", Font.PLAIN, 17);
         t1.setFont(font2);
         t1.addActionListener(new ActionListener() {
@@ -144,10 +152,7 @@ public class freeram {
         System
             .out
             .println(changed);
-        FileReader fr1 = new FileReader("C:\\Freeram\\freeram.ini");
-        int time = fr1.read();
         time = time * 60000;
-        fr1.close();
         wait w1 = new wait();
         try {
             for (int i = 0; i < 50; i++) {
