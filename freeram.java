@@ -156,11 +156,14 @@ public class freeram {
         wait w1 = new wait();
         try {
             for (int i = 0; i < 50; i++) {
-                //TODO implement loop reset on value change
-                w1.wait(time);
+                //TODO loop reset still not perfect
+                if (changed == false) {
+                    w1.wait(time);
+                }
                 Runtime
                     .getRuntime()
                     .exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
+                changed = false;
             }
         } catch (IOException c) {
             c.printStackTrace();
