@@ -20,12 +20,13 @@ public class freeram {
         String Dir = "C:\\FreeRam";
         unzip u1 = new unzip();
         u1.unzip(Path, Dir);
+
         BufferedReader br1 = new BufferedReader(
-            new FileReader("C:\\Freeram\\freeram.ini")
-        );
+                    new FileReader("C:\\Freeram\\freeram.ini")
+                );
         String timestring = br1.readLine();
         br1.close();
-        int time = Integer.valueOf(timestring);
+        // int time = Integer.valueOf(timestring);
 
         //LAF
         try {
@@ -152,13 +153,31 @@ public class freeram {
         System
             .out
             .println(changed);
-        time = time * 60000;
+        // time = time * 60000; int divtime = time/1000; int flag = 0;
         wait w1 = new wait();
         try {
-            for (int i = 0; i < 50; i++) {
+            for (int i = 1; i > 0; i++) { //infinite
                 //TODO loop reset still not perfect
-                if (changed == false) {
-                    w1.wait(time);
+
+                BufferedReader br2 = new BufferedReader(
+                    new FileReader("C:\\Freeram\\freeram.ini")
+                );
+                String timestr = br2.readLine();
+                br2.close();
+                int time = Integer.valueOf(timestr);
+
+                time = time * 60000;
+                int divtime = time / 1000;
+                int flag = 0;
+                while (changed == false) {
+                    w1.wait(1000);
+                    flag++;
+                    if (changed == true) {
+                        break;
+                    }
+                    if (flag == divtime) {
+                        break;
+                    }
                 }
                 Runtime
                     .getRuntime()
