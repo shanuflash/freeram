@@ -8,7 +8,10 @@ import java.awt.event. *;
 import java.awt. *;
 
 public class freeram {
+    public static boolean changed = false;
     public static void main(String[] args)throws IOException {
+        File fi1 = new File("C:\\FreeRam\\freeram.ini");
+        fi1.createNewFile();
         download d1 = new download();
         d1.download();
         String Path = "C:\\FreeRam\\RamMap.zip";
@@ -45,17 +48,30 @@ public class freeram {
         f.add(l1);
 
         //  TextField t1
-        JTextField t1 = new JTextField(" 60");
+        JTextField t1 = new JTextField("60");
         t1.setBounds(20, 55, 250, 35);
         Font font2 = new Font("Roboto", Font.PLAIN, 17);
         t1.setFont(font2);
         t1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String timestr = t1.getText();
-                double time = Double.parseDouble(timestr);
+                try {
+                    FileWriter fw2 = new FileWriter("C:\\FreeRam\\freeram.ini");
+                    fw2.append(timestr);
+                    fw2.close();
+                    changed = true;
+                    System
+                        .out
+                        .println(changed);
+                } catch (IOException f) {
+                    System
+                        .out
+                        .println("An error occurred.");
+                    f.printStackTrace();
+                }
                 System
                     .out
-                    .println(time);
+                    .println(timestr);
             }
         });
         f.add(t1);
@@ -122,13 +138,21 @@ public class freeram {
         }
 
         //  RAMMAP  exec
-        wait w1 = new wait();
         Runtime
             .getRuntime()
             .exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
+        System
+            .out
+            .println(changed);
+        FileReader fr1 = new FileReader("C:\\Freeram\\freeram.ini");
+        int time = fr1.read();
+        time = time * 60000;
+        fr1.close();
+        wait w1 = new wait();
         try {
             for (int i = 0; i < 50; i++) {
-                w1.wait(3600000);
+                //TODO implement loop reset on value change
+                w1.wait(time);
                 Runtime
                     .getRuntime()
                     .exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
