@@ -2,6 +2,7 @@ import etc. *;
 
 import java.io. *;
 import com.formdev.flatlaf. *;
+import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 import javax.swing. *;
 import java.awt.event. *;
 import java.awt. *;
@@ -17,7 +18,7 @@ public class freeram {
 
         //LAF
         try {
-            UIManager.setLookAndFeel(new FlatDarkLaf());
+            UIManager.setLookAndFeel(new FlatCarbonIJTheme());
         } catch (Exception ex) {
             System
                 .err
@@ -26,6 +27,8 @@ public class freeram {
 
         //  Frame
         JFrame f = new JFrame("Free Ram");
+        f.setLocationByPlatform(true);
+        System.setProperty( "flatlaf.menuBarEmbedded", "false" );
         f.setSize(315, 200);
         f.setLayout(null);
         ImageIcon img = new ImageIcon("src\\ram.png");
@@ -67,9 +70,10 @@ public class freeram {
 
         //  Button b1
         JButton b1 = new JButton("Click Here");
+        b1.putClientProperty( "JButton.buttonType", "roundRect" );
         b1.setBounds(150, 110, 100, 30);
-        b1.setFocusPainted(false);
-        b1.setContentAreaFilled(false);
+        // b1.setFocusPainted(false);
+        // b1.setContentAreaFilled(false);
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -82,6 +86,7 @@ public class freeram {
             }
         });
         f.add(b1);
+
         //  System  Tray
         if (!SystemTray.isSupported()) {
             System

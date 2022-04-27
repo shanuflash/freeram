@@ -11,7 +11,7 @@ public class download {
         System
             .out
             .println("Downloading prerequisites...");
-        
+            
         URL fetchWebsite = new URL(
                 "https://download.sysinternals.com/files/RAMMap.zip"
             );
