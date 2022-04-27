@@ -1,7 +1,7 @@
-import etc.*;
+import etc. *;
 
 import java.io. *;
-import com.formdev.flatlaf.*;
+import com.formdev.flatlaf. *;
 import javax.swing. *;
 import java.awt.event. *;
 import java.awt. *;
@@ -15,14 +15,14 @@ public class freeram {
         unzip u1 = new unzip();
         u1.unzip(Path, Dir);
 
-
         //LAF
         try {
-            UIManager.setLookAndFeel( new FlatDarkLaf() );
-        } catch( Exception ex ) {
-            System.err.println( "Failed to initialize LaF" );
+            UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception ex) {
+            System
+                .err
+                .println("Failed to initialize LaF");
         }
-
 
         //  Frame
         JFrame f = new JFrame("Free Ram");
@@ -38,8 +38,8 @@ public class freeram {
         Font font1 = new Font("Roboto", Font.PLAIN, 20);
         l1.setFont(font1);
         //System.out.println("L1= " + l1.getPreferredSize());
-        l1.setBounds(20,20, 152, 26);  
-        f.add(l1); 
+        l1.setBounds(20, 20, 152, 26);
+        f.add(l1);
 
         //  TextField t1
         JTextField t1 = new JTextField(" 60");
@@ -50,17 +50,19 @@ public class freeram {
             public void actionPerformed(ActionEvent e) {
                 String timestr = t1.getText();
                 double time = Double.parseDouble(timestr);
-                System.out.println(time);
+                System
+                    .out
+                    .println(time);
             }
         });
         f.add(t1);
 
         //  Label l2
         JLabel l2 = new JLabel("Manual Clean:");
-        //Font font2 = new Font("Roboto", Font.PLAIN, 20);
-        //System.out.println("L2= " + l2.getPreferredSize());
+        // Font font2 = new Font("Roboto", Font.PLAIN, 20); System.out.println("L2= " +
+        // l2.getPreferredSize());
         l2.setFont(font1);
-        l2.setBounds(20,110, 125, 26);  
+        l2.setBounds(20, 110, 125, 26);
         f.add(l2);
 
         //  Button b1
@@ -116,7 +118,7 @@ public class freeram {
         }
 
         //  RAMMAP  exec
-        wait w1 = new wait(); 
+        wait w1 = new wait();
         Runtime
             .getRuntime()
             .exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
