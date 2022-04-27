@@ -22,13 +22,12 @@ public class freeram {
         u1.unzip(Path, Dir);
 
         BufferedReader br1 = new BufferedReader(
-                    new FileReader("C:\\Freeram\\freeram.ini")
-                );
+            new FileReader("C:\\Freeram\\freeram.ini")
+        );
         String timestring = br1.readLine();
         br1.close();
-        // int time = Integer.valueOf(timestring);
 
-        //LAF
+        //  LAF
         try {
             UIManager.setLookAndFeel(new FlatCarbonIJTheme());
         } catch (Exception ex) {
@@ -71,16 +70,13 @@ public class freeram {
                     changed = true;
                     System
                         .out
-                        .println(changed);
+                        .println("User input changed to " + timestr);
                 } catch (IOException f) {
                     System
                         .out
                         .println("An error occurred.");
                     f.printStackTrace();
                 }
-                System
-                    .out
-                    .println(timestr);
             }
         });
         f.add(t1);
@@ -115,7 +111,7 @@ public class freeram {
         if (!SystemTray.isSupported()) {
             System
                 .out
-                .println("System tray is not supported !!! ");
+                .println("System tray is not supported!");
             return;
         }
         SystemTray systemTray = SystemTray.getSystemTray();
@@ -150,15 +146,9 @@ public class freeram {
         Runtime
             .getRuntime()
             .exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
-        System
-            .out
-            .println(changed);
-        // time = time * 60000; int divtime = time/1000; int flag = 0;
         wait w1 = new wait();
         try {
             for (int i = 1; i > 0; i++) { //infinite
-                //TODO loop reset still not perfect
-
                 BufferedReader br2 = new BufferedReader(
                     new FileReader("C:\\Freeram\\freeram.ini")
                 );
