@@ -1,7 +1,6 @@
 import etc. *;
 
 import java.io. *;
-
 import com.formdev.flatlaf. *;
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 import javax.swing. *;
@@ -11,8 +10,10 @@ import java.awt. *;
 public class freeram {
     public static boolean changed = false;
     public static void main(String[] args)throws IOException {
-        File fi1 = new File("C:\\FreeRam\\freeram.ini");
-        fi1.createNewFile();
+        File fi1 = new File("C:\\FreeRam\\config\\");
+        fi1.mkdir();
+        File fi2 = new File("C:\\FreeRam\\config\\freeram.ini");
+        fi2.createNewFile();
 
         download d1 = new download();
         d1.download();
@@ -21,9 +22,9 @@ public class freeram {
         String Dir = "C:\\FreeRam";
         unzip u1 = new unzip();
         u1.unzip(Path, Dir);
-
+        
         BufferedReader br1 = new BufferedReader(
-            new FileReader("C:\\Freeram\\freeram.ini")
+            new FileReader("C:\\Freeram\\config\\freeram.ini")
         );
         String timestring = br1.readLine();
         br1.close();
@@ -65,7 +66,7 @@ public class freeram {
             public void actionPerformed(ActionEvent e) {
                 String timestr = t1.getText();
                 try {
-                    FileWriter fw2 = new FileWriter("C:\\FreeRam\\freeram.ini");
+                    FileWriter fw2 = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
                     fw2.append(timestr);
                     fw2.close();
                     changed = true;
@@ -156,7 +157,7 @@ public class freeram {
         try {
             for (int i = 1; i > 0; i++) { //infinite
                 BufferedReader br2 = new BufferedReader(
-                    new FileReader("C:\\Freeram\\freeram.ini")
+                    new FileReader("C:\\Freeram\\config\\freeram.ini")
                 );
                 String timestr = br2.readLine();
                 br2.close();
