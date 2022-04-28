@@ -1,6 +1,7 @@
 import etc. *;
 
 import java.io. *;
+
 import com.formdev.flatlaf. *;
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 import javax.swing. *;
@@ -83,8 +84,8 @@ public class freeram {
 
         //  Label l2
         JLabel l2 = new JLabel("Manual Clean:");
-        // Font font2 = new Font("Roboto", Font.PLAIN, 20); System.out.println("L2= " +
-        // l2.getPreferredSize());
+        // Font font2 = new Font("Roboto", Font.PLAIN, 20); System.out.println("L2=
+        // "+l2.getPreferredSize());
         l2.setFont(font1);
         l2.setBounds(20, 110, 125, 26);
         f.add(l2);
@@ -107,7 +108,7 @@ public class freeram {
         });
         f.add(b1);
 
-        //  System  Tray
+        //  System Tray
         if (!SystemTray.isSupported()) {
             System
                 .out
@@ -115,17 +116,18 @@ public class freeram {
             return;
         }
         SystemTray systemTray = SystemTray.getSystemTray();
-        Image image = Toolkit
-            .getDefaultToolkit()
-            .getImage("src/ram.png");
         PopupMenu trayPopupMenu = new PopupMenu();
-        MenuItem action = new MenuItem("Show");
-        action.addActionListener(new ActionListener() {
+
+        //  Show menu
+        MenuItem show = new MenuItem("Show");
+        show.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
                 f.setVisible(true);
             }
         });
-        trayPopupMenu.add(action);
+        trayPopupMenu.add(show);
+
+        //  Close menu
         MenuItem close = new MenuItem("Close");
         close.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
@@ -133,16 +135,20 @@ public class freeram {
             }
         });
         trayPopupMenu.add(close);
+
+        //  Tray icon
+        Image image = Toolkit
+            .getDefaultToolkit()
+            .getImage("src/ram.png");
         TrayIcon trayIcon = new TrayIcon(image, "FreeRam", trayPopupMenu);
         trayIcon.setImageAutoSize(true);
-
         try {
             systemTray.add(trayIcon);
         } catch (AWTException awtException) {
             awtException.printStackTrace();
         }
 
-        //  RAMMAP  exec
+        //  RAMMAP exec
         Runtime
             .getRuntime()
             .exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
@@ -154,8 +160,8 @@ public class freeram {
                 );
                 String timestr = br2.readLine();
                 br2.close();
-                int time = Integer.valueOf(timestr);
 
+                int time = Integer.valueOf(timestr);
                 time = time * 60000;
                 int divtime = time / 1000;
                 int flag = 0;
