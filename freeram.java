@@ -14,7 +14,9 @@ public class freeram {
         fi1.mkdir();
         File fi2 = new File("C:\\FreeRam\\config\\freeram.ini");
         fi2.createNewFile();
-
+        System
+            .out
+            .println(fi2.length());
         download d1 = new download();
         d1.download();
 
@@ -22,7 +24,7 @@ public class freeram {
         String Dir = "C:\\FreeRam";
         unzip u1 = new unzip();
         u1.unzip(Path, Dir);
-        
+
         BufferedReader br1 = new BufferedReader(
             new FileReader("C:\\Freeram\\config\\freeram.ini")
         );
