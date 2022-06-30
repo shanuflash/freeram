@@ -12,8 +12,15 @@ public class freeram {
     public static void main(String[] args)throws IOException {
         File fi1 = new File("C:\\FreeRam\\config\\");
         fi1.mkdir();
+        
         File fi2 = new File("C:\\FreeRam\\config\\freeram.ini");
+        if (!fi2.exists()) {
+            FileWriter fw0 = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
+            fw0.write("60");
+            fw0.close();
+        }
         fi2.createNewFile();
+        
         download d1 = new download();
         d1.download();
 
