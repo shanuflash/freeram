@@ -35,5 +35,7 @@ public class unzip {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        File fi = new File("C:\\FreeRam\\rammap\\RAMMap.zip");
+        fi.delete();
     }
 }

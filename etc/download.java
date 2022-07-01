@@ -5,7 +5,7 @@ import java.nio.channels. *;
 
 public class download {
     public void download()throws MalformedURLException, IOException {
-        File zdir = new File("C:\\FreeRam");
+        File zdir = new File("C:\\FreeRam\\rammap\\");
         if (!zdir.exists()) 
             zdir.mkdirs();
         System
@@ -19,7 +19,7 @@ public class download {
         ReadableByteChannel readableByteChannel = Channels.newChannel(
             fetchWebsite.openStream()
         );
-        try(FileOutputStream fos = new FileOutputStream("C:\\FreeRam\\RamMap.zip")) {
+        try(FileOutputStream fos = new FileOutputStream("C:\\FreeRam\\rammap\\RamMap.zip")) {
             fos
                 .getChannel()
                 .transferFrom(readableByteChannel, 0, Long.MAX_VALUE);

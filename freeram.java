@@ -9,31 +9,44 @@ import java.awt. *;
 
 public class freeram {
     public static boolean changed = false;
+    public static boolean first = true;
+    public static String Path = "C:\\FreeRam\\rammap\\RamMap.zip";
+    public static String Dir = "C:\\FreeRam\\rammap";
     public static void main(String[] args)throws IOException {
-        File fi1 = new File("C:\\FreeRam\\config\\");
-        fi1.mkdir();
-        
-        File fi2 = new File("C:\\FreeRam\\config\\freeram.ini");
-        if (!fi2.exists()) {
-            FileWriter fw0 = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
-            fw0.write("60");
-            fw0.close();
+        File fi = new File("C:\\FreeRam\\config\\");
+        if (!fi.exists()) {
+            fi.mkdirs();
         }
-        fi2.createNewFile();
+
+        fi = new File("C:\\FreeRam\\config\\freeram.ini");
+        if (fi.exists() == false) {
+            fi.createNewFile();
+            FileWriter fw = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
+            fw.write("60");
+            fw.close();
+        }
+
+        fi = new File("C:\\FreeRam\\config\\firstrun.ini");
+        if (fi.exists() == false) {
+            fi.createNewFile();
+            FileWriter fw = new FileWriter("C:\\FreeRam\\config\\firstrun.ini");
+            fw.write("1");
+            fw.close();
+        } else 
+            first = false;
         
-        download d1 = new download();
-        d1.download();
+        if (first == true) {
+            download d1 = new download();
+            d1.download();
+            unzip u1 = new unzip();
+            u1.unzip(Path, Dir);
+        }
 
-        String Path = "C:\\FreeRam\\RamMap.zip";
-        String Dir = "C:\\FreeRam";
-        unzip u1 = new unzip();
-        u1.unzip(Path, Dir);
-
-        BufferedReader br1 = new BufferedReader(
+        BufferedReader br = new BufferedReader(
             new FileReader("C:\\Freeram\\config\\freeram.ini")
         );
-        String timestring = br1.readLine();
-        br1.close();
+        String timestring = br.readLine();
+        br.close();
 
         //  LAF
         try {
@@ -107,7 +120,7 @@ public class freeram {
                 try {
                     Runtime
                         .getRuntime()
-                        .exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
+                        .exec("cmd /c C:\\FreeRam\\rammap\\rammap.exe -ew", null);
                 } catch (IOException a) {
                     a.printStackTrace();
                 }
@@ -159,8 +172,8 @@ public class freeram {
         //  RAMMAP exec
         Runtime
             .getRuntime()
-            .exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
-        wait w1 = new wait();
+            .exec("cmd /c C:\\FreeRam\\rammap\\rammap.exe -ew", null);
+        wait w = new wait();
         try {
             for (int i = 1; i > 0; i++) { //infinite
                 BufferedReader br2 = new BufferedReader(
@@ -174,7 +187,7 @@ public class freeram {
                 int divtime = time / 1000;
                 int flag = 0;
                 while (changed == false) {
-                    w1.wait(1000);
+                    w.wait(1000);
                     flag++;
                     if (changed == true) {
                         break;
@@ -185,7 +198,7 @@ public class freeram {
                 }
                 Runtime
                     .getRuntime()
-                    .exec("cmd /c C:\\FreeRam\\rammap.exe -ew", null);
+                    .exec("cmd /c C:\\FreeRam\\rammap\\rammap.exe -ew", null);
                 changed = false;
             }
         } catch (IOException c) {
