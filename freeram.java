@@ -128,6 +128,12 @@ public class freeram {
         });
         f.add(b1);
 
+        f.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                f.setVisible(false);
+                JOptionPane.showMessageDialog(f, "Freeram has been minimized to tray!    ");
+            }
+        });
         f.repaint();
 
         //  System Tray
