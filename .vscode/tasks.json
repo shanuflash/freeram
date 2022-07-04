@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "java",
+            "mainClass": "freeram",
+            "targetPath": "${workspaceFolder}/output/freeram.jar",
+            "elements": [
+                "${compileOutput}", 
+				"${dependencies}", 
+                "!${compileOutput}/output/", 
+                "!${compileOutput}/src/", 
+                "!${compileOutput}/lib/", 
+                "!${compileOutput}/CODE_OF_CONDUCT.md", 
+                "!${compileOutput}/LICENSE", 
+                "!${compileOutput}/README.md"
+            ],
+            "problemMatcher": [],
+            "label": "freeram export ezz"
+        }
+    ]
+}

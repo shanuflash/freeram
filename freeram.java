@@ -62,7 +62,7 @@ public class freeram {
         f.setLocationByPlatform(true);
         f.setSize(315, 200);
         f.setLayout(null);
-        ImageIcon img = new ImageIcon("src\\ram.png");
+        ImageIcon img = new ImageIcon("C:\\Freeram\\src\\ram.png");
         f.setIconImage(img.getImage());
         f.setLocationRelativeTo(null);
         f.setVisible(true);
@@ -164,7 +164,7 @@ public class freeram {
         //  Tray icon
         Image image = Toolkit
             .getDefaultToolkit()
-            .getImage("src/ram.png");
+            .getImage("C:\\Freeram\\src\\ram.png");
         TrayIcon trayIcon = new TrayIcon(image, "FreeRam", trayPopupMenu);
         trayIcon.setImageAutoSize(true);
         try {

@@ -2,13 +2,8 @@
     "java.project.referencedLibraries": {
         "include": [
             "lib/**/*.jar",
-            "c:\\Users\\shanu\\Downloads\\weblaf-core-1.2.13.jar"
         ],
         "exclude": [
-            "c:\\Program Files\\Java\\javafx-sdk-18\\lib\\javafx-swt.jar",
-            "c:\\Program Files\\Java\\javafx-sdk-18\\lib\\javafx.swing.jar",
-            "lib/ini4j-0.5.4.jar",
-            "lib/mslinks.jar"
         ]
     }
 }
