@@ -40,6 +40,7 @@ public class freeram {
         if (first == true) {
             new download(Url, Dir, Path);
             new unzip(Path, Dir);
+            new startup();
         }
 
         BufferedReader br = new BufferedReader(

@@ -1,4 +1,5 @@
 package etc;
+
 import java.io. *;
 import java.net. *;
 import java.nio.channels. *;
@@ -10,7 +11,7 @@ public class download {
             zdir.mkdirs();
         System
             .out
-            .println("Downloading RAMMap.zip");
+            .println("Downloading to " + Path);
 
         URL fetchWebsite = new URL(Url);
 
