@@ -14,7 +14,8 @@
                 "!${compileOutput}/CODE_OF_CONDUCT.md", 
                 "!${compileOutput}/LICENSE", 
                 "!${compileOutput}/README.md",
-                "!${compileOutput}/FreeRam.manifest"
+                "!${compileOutput}/freeram.manifest",
+                "!${compileOutput}/freeram.xml"
             ],
             "problemMatcher": [],
             "label": "freeram export ezz"
