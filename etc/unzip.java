@@ -3,7 +3,7 @@ import java.util.zip. *;
 import java.io. *;
 
 public class unzip {
-    public void unzip(String Path, String Dir) {
+    public unzip(String Path, String Dir) {
         File dir = new File(Dir);
         if (!dir.exists()) 
             dir.mkdirs();
@@ -35,7 +35,10 @@ public class unzip {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        File fi = new File("C:\\FreeRam\\rammap\\RAMMap.zip");
+        File fi = new File(Path);
         fi.delete();
+        System
+            .out
+            .println("Deleting RAMMap.zip");
     }
 }

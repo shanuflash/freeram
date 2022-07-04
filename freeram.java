@@ -1,7 +1,6 @@
 import etc. *;
 
 import java.io. *;
-import com.formdev.flatlaf. *;
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 import javax.swing. *;
 import java.awt.event. *;
@@ -11,8 +10,9 @@ public class freeram {
     public static boolean changed = false;
     public static boolean first = true;
     public static String timestring;
+    public static String Url = "https://download.sysinternals.com/files/RAMMap.zip";
     public static String Path = "C:\\FreeRam\\rammap\\RamMap.zip";
-    public static String Dir = "C:\\FreeRam\\rammap";
+    public static String Dir = "C:\\FreeRam\\rammap\\";
     public static void main(String[] args)throws IOException {
         File fi = new File("C:\\FreeRam\\config\\");
         if (!fi.exists()) {
@@ -38,10 +38,8 @@ public class freeram {
         }
 
         if (first == true) {
-            download d1 = new download();
-            d1.download();
-            unzip u1 = new unzip();
-            u1.unzip(Path, Dir);
+            new download(Url, Dir, Path);
+            new unzip(Path, Dir);
         }
 
         BufferedReader br = new BufferedReader(
@@ -179,7 +177,6 @@ public class freeram {
         Runtime
             .getRuntime()
             .exec("cmd /c C:\\FreeRam\\rammap\\rammap.exe -ew", null);
-        wait w = new wait();
         try {
             for (int i = 1; i > 0; i++) { //infinite
                 BufferedReader br2 = new BufferedReader(
@@ -193,7 +190,7 @@ public class freeram {
                 int divtime = time / 1000;
                 int flag = 0;
                 while (changed == false) {
-                    w.wait(1000);
+                    new wait(1000);
                     flag++;
                     if (changed == true) {
                         break;

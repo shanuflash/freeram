@@ -2,7 +2,7 @@ package etc;
 import java.lang.Thread;
 
 public class wait {
-    public void wait(int ms) {
+    public wait(int ms) {
         try {
             Thread.sleep(ms);
         } catch (InterruptedException ex) {
