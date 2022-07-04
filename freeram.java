@@ -10,6 +10,7 @@ import java.awt. *;
 public class freeram {
     public static boolean changed = false;
     public static boolean first = true;
+    public static String timestring;
     public static String Path = "C:\\FreeRam\\rammap\\RamMap.zip";
     public static String Dir = "C:\\FreeRam\\rammap";
     public static void main(String[] args)throws IOException {
@@ -32,9 +33,10 @@ public class freeram {
             FileWriter fw = new FileWriter("C:\\FreeRam\\config\\firstrun.ini");
             fw.write("1");
             fw.close();
-        } else 
+        } else {
             first = false;
-        
+        }
+
         if (first == true) {
             download d1 = new download();
             d1.download();
@@ -45,7 +47,7 @@ public class freeram {
         BufferedReader br = new BufferedReader(
             new FileReader("C:\\Freeram\\config\\freeram.ini")
         );
-        String timestring = br.readLine();
+        timestring = br.readLine();
         br.close();
 
         //  LAF
@@ -57,10 +59,9 @@ public class freeram {
                 .println("Failed to initialize LaF");
         }
 
-        //  Frame
+        //  Debug System.out.println("L1= " + l1.getPreferredSize());  Frame
         JFrame f = new JFrame("Free Ram");
         f.setLocationByPlatform(true);
-        System.setProperty("flatlaf.menuBarEmbedded", "false");
         f.setSize(315, 200);
         f.setLayout(null);
         ImageIcon img = new ImageIcon("src\\ram.png");
@@ -72,7 +73,6 @@ public class freeram {
         JLabel l1 = new JLabel("Change Timings: ");
         Font font1 = new Font("Roboto", Font.PLAIN, 20);
         l1.setFont(font1);
-        //System.out.println("L1= " + l1.getPreferredSize());
         l1.setBounds(20, 20, 152, 26);
         f.add(l1);
 
@@ -85,13 +85,16 @@ public class freeram {
             public void actionPerformed(ActionEvent e) {
                 String timestr = t1.getText();
                 try {
-                    FileWriter fw2 = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
-                    fw2.append(timestr);
-                    fw2.close();
-                    changed = true;
-                    System
-                        .out
-                        .println("User input changed to " + timestr);
+                    if (!timestring.equals(timestr)) {
+                        FileWriter fw2 = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
+                        fw2.append(timestr);
+                        timestring = timestr;
+                        fw2.close();
+                        changed = true;
+                        System
+                            .out
+                            .println("User input changed to " + timestr);
+                    }
                 } catch (IOException f) {
                     System
                         .out
@@ -104,8 +107,6 @@ public class freeram {
 
         //  Label l2
         JLabel l2 = new JLabel("Manual Clean:");
-        // Font font2 = new Font("Roboto", Font.PLAIN, 20); System.out.println("L2=
-        // "+l2.getPreferredSize());
         l2.setFont(font1);
         l2.setBounds(20, 110, 125, 26);
         f.add(l2);
@@ -114,7 +115,6 @@ public class freeram {
         JButton b1 = new JButton("Click Here");
         b1.putClientProperty("JButton.buttonType", "roundRect");
         b1.setBounds(150, 110, 100, 30);
-        // b1.setFocusPainted(false); b1.setContentAreaFilled(false);
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -128,12 +128,13 @@ public class freeram {
         });
         f.add(b1);
 
+        f.repaint();
+
         //  System Tray
         if (!SystemTray.isSupported()) {
             System
                 .out
                 .println("System tray is not supported!");
-            return;
         }
         SystemTray systemTray = SystemTray.getSystemTray();
         PopupMenu trayPopupMenu = new PopupMenu();
@@ -155,7 +156,6 @@ public class freeram {
             }
         });
         trayPopupMenu.add(close);
-        f.repaint();
 
         //  Tray icon
         Image image = Toolkit
