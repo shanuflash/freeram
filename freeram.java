@@ -58,7 +58,7 @@ public class freeram {
                 .println("Failed to initialize LaF");
         }
 
-        //  Debug System.out.println("L1= " + l1.getPreferredSize());  Frame
+        //  Frame
         JFrame f = new JFrame("Free Ram");
         f.setLocationByPlatform(true);
         f.setSize(315, 200);
@@ -72,8 +72,8 @@ public class freeram {
         JLabel l1 = new JLabel("Change Timings: ");
         Font font1 = new Font("Roboto", Font.PLAIN, 20);
         l1.setFont(font1);
+        //  Debug System.out.println("L1= " + l1.getPreferredSize());
         l1.setBounds(20, 20, 152, 26);
-        f.add(l1);
 
         //  TextField t1
         JTextField t1 = new JTextField(timestring);
@@ -102,13 +102,11 @@ public class freeram {
                 }
             }
         });
-        f.add(t1);
 
         //  Label l2
         JLabel l2 = new JLabel("Manual Clean:");
         l2.setFont(font1);
         l2.setBounds(20, 110, 125, 26);
-        f.add(l2);
 
         //  Button b1
         JButton b1 = new JButton("Click Here");
@@ -125,7 +123,6 @@ public class freeram {
                 }
             }
         });
-        f.add(b1);
 
         f.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -133,6 +130,11 @@ public class freeram {
                 JOptionPane.showMessageDialog(f, "Freeram has been minimized to tray!    ");
             }
         });
+        f.add(l1);
+        f.add(t1);
+        f.add(l2);
+        f.add(b1);
+        f.setResizable(false);
         f.repaint();
 
         //  System Tray
