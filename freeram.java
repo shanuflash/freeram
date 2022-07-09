@@ -9,6 +9,7 @@ import java.awt. *;
 public class freeram {
     public static boolean changed = false;
     public static boolean first = true;
+    public static boolean pause = false;
     public static String timestring;
     public static String Url = "https://download.sysinternals.com/files/RAMMap.zip";
     public static String Path = "C:\\FreeRam\\rammap\\RamMap.zip";
@@ -60,11 +61,13 @@ public class freeram {
 
         //  Frame
         JFrame f = new JFrame("Free Ram");
+        f.setResizable(false);
         f.setLocationByPlatform(true);
-        f.setSize(315, 200);
+        f.setSize(315, 220);
         f.setLayout(null);
-        ImageIcon img = new ImageIcon("C:\\Freeram\\src\\ram.png");
-        f.setIconImage(img.getImage());
+        f.setAlwaysOnTop(true);
+        ImageIcon img1 = new ImageIcon("C:\\Freeram\\src\\ram.png");
+        f.setIconImage(img1.getImage());
         f.setLocationRelativeTo(null);
         f.setVisible(true);
 
@@ -72,12 +75,12 @@ public class freeram {
         JLabel l1 = new JLabel("Change Timings: ");
         Font font1 = new Font("Roboto", Font.PLAIN, 20);
         l1.setFont(font1);
-        //  Debug System.out.println("L1= " + l1.getPreferredSize());
-        l1.setBounds(20, 20, 152, 26);
+        //  Debug: System.out.println("L1= " + l1.getPreferredSize());
+        l1.setBounds(20, 10, 152, 26);
 
         //  TextField t1
         JTextField t1 = new JTextField(timestring);
-        t1.setBounds(20, 55, 260, 35);
+        t1.setBounds(20, 45, 260, 35);
         Font font2 = new Font("Roboto", Font.PLAIN, 17);
         t1.setFont(font2);
         t1.addActionListener(new ActionListener() {
@@ -103,15 +106,25 @@ public class freeram {
             }
         });
 
+        //  CheckBox c1
+        JCheckBox c1 = new JCheckBox("Pause auto clean", pause);
+        // System.out.println("c1= " + c1.getPreferredSize());
+        c1.setBounds(20, 82, 112, 30);
+        c1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                pause = c1.isSelected();
+            }
+        });
+
         //  Label l2
         JLabel l2 = new JLabel("Manual Clean:");
         l2.setFont(font1);
-        l2.setBounds(20, 110, 125, 26);
+        l2.setBounds(20, 115, 125, 26);
 
         //  Button b1
         JButton b1 = new JButton("Click Here");
         b1.putClientProperty("JButton.buttonType", "roundRect");
-        b1.setBounds(150, 110, 100, 30);
+        b1.setBounds(150, 115, 100, 30);
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -124,17 +137,26 @@ public class freeram {
             }
         });
 
+        //  Label l3
+        JLabel l3 = new JLabel("⚠️ Press the close button to minimize to tray");
+        l3.setFont(new Font("Roboto", Font.PLAIN, 12));
+        //  Debug: System.out.println("L1= " + l1.getPreferredSize());
+        l3.setBounds(20, 145, 295, 26);
+
         f.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 f.setVisible(false);
                 JOptionPane.showMessageDialog(f, "Freeram has been minimized to tray!    ");
             }
         });
+
+        //  Add components
         f.add(l1);
-        f.add(t1);
         f.add(l2);
+        f.add(l3);
+        f.add(t1);
+        f.add(c1);
         f.add(b1);
-        f.setResizable(false);
         f.repaint();
 
         //  System Tray
@@ -151,6 +173,7 @@ public class freeram {
         show.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
                 f.setVisible(true);
+                f.repaint();
             }
         });
         trayPopupMenu.add(show);
@@ -181,7 +204,7 @@ public class freeram {
             .getRuntime()
             .exec("cmd /c C:\\FreeRam\\rammap\\rammap.exe -ew", null);
         try {
-            for (int i = 1; i > 0; i++) { //infinite
+            for (;;) { //infinite
                 BufferedReader br2 = new BufferedReader(
                     new FileReader("C:\\Freeram\\config\\freeram.ini")
                 );
@@ -192,6 +215,7 @@ public class freeram {
                 time = time * 60000;
                 int divtime = time / 1000;
                 int flag = 0;
+
                 while (changed == false) {
                     new wait(1000);
                     flag++;
@@ -201,7 +225,17 @@ public class freeram {
                     if (flag == divtime) {
                         break;
                     }
+
+                    while (pause == true) {
+                        System
+                            .out
+                            .print("");
+                        if (pause == false) {
+                            break;
+                        }
+                    }
                 }
+
                 Runtime
                     .getRuntime()
                     .exec("cmd /c C:\\FreeRam\\rammap\\rammap.exe -ew", null);
