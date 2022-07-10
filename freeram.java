@@ -164,38 +164,45 @@ public class freeram {
                 .println("System tray is not supported!");
         }
         SystemTray systemTray = SystemTray.getSystemTray();
-        PopupMenu trayPopupMenu = new PopupMenu();
+        JPopupMenu popup = new JPopupMenu();
 
         //  Show menu
-        MenuItem show = new MenuItem("Show");
+        JMenuItem show = new JMenuItem("Show");
         show.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
                 f.setVisible(true);
                 f.repaint();
             }
         });
-        trayPopupMenu.add(show);
+        popup.add(show);
 
         //  Close menu
-        MenuItem close = new MenuItem("Close");
+        JMenuItem close = new JMenuItem("Close");
         close.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-        trayPopupMenu.add(close);
+        popup.add(close);
 
         //  Tray icon
         Image image = Toolkit
             .getDefaultToolkit()
             .getImage("C:\\Freeram\\src\\ram.png");
-        TrayIcon trayIcon = new TrayIcon(image, "FreeRam", trayPopupMenu);
+        TrayIcon trayIcon = new TrayIcon(image, "FreeRam");
         trayIcon.setImageAutoSize(true);
         try {
             systemTray.add(trayIcon);
         } catch (AWTException awtException) {
             awtException.printStackTrace();
         }
+        trayIcon.addMouseListener(new MouseAdapter() {
+            @Override public void mouseReleased(MouseEvent e) {
+                popup.setLocation(e.getX() - 80, e.getY() - 50);
+                popup.setInvoker(popup);
+                popup.setVisible(true);
+            }
+        });
 
         //  RAMMAP exec
         Runtime
