@@ -73,16 +73,14 @@ public class freeram {
 
         //  Label l1
         JLabel l1 = new JLabel("Change Timings: ");
-        Font font1 = new Font("Roboto", Font.PLAIN, 20);
-        l1.setFont(font1);
+        l1.setFont(new Font("Roboto", Font.PLAIN, 20));
         //  Debug: System.out.println("L1= " + l1.getPreferredSize());
         l1.setBounds(20, 10, 152, 26);
 
         //  TextField t1
         JTextField t1 = new JTextField(timestring);
         t1.setBounds(20, 45, 260, 35);
-        Font font2 = new Font("Roboto", Font.PLAIN, 17);
-        t1.setFont(font2);
+        t1.setFont(new Font("Roboto", Font.PLAIN, 17));
         t1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String timestr = t1.getText();
@@ -118,7 +116,7 @@ public class freeram {
 
         //  Label l2
         JLabel l2 = new JLabel("Manual Clean:");
-        l2.setFont(font1);
+        l2.setFont(new Font("Roboto", Font.PLAIN, 20));
         l2.setBounds(20, 115, 125, 26);
 
         //  Button b1
