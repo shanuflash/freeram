@@ -178,18 +178,6 @@ public class freeram {
             awtException.printStackTrace();
         }
 
-        trayIcon.addMouseListener(new MouseAdapter() {
-            @Override public void mouseClicked(MouseEvent e) {
-                Timer t = new Timer(2500, new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        popup.setVisible(false);
-                    }
-                });
-                t.setRepeats(false);
-                t.start();
-            }
-        });
-
         //  Show menu
         JMenuItem show = new JMenuItem("Show");
         show.addActionListener(new ActionListener() {
@@ -211,10 +199,29 @@ public class freeram {
 
         //  Tray events
         trayIcon.addMouseListener(new MouseAdapter() {
+            @Override public void mousePressed(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON1) {
+                    if (e.getClickCount() >= 2) {
+                        f.setVisible(true);
+                        f.repaint();
+                    }
+                }
+            }
             @Override public void mouseReleased(MouseEvent e) {
-                popup.setLocation(e.getX() - 80, e.getY() - 50);
-                popup.setInvoker(popup);
-                popup.setVisible(true);
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    popup.setLocation(e.getX() - 80, e.getY() - 50);
+                    popup.setInvoker(popup);
+                    popup.setVisible(true);
+                }
+            }
+            @Override public void mouseClicked(MouseEvent e) {
+                Timer t = new Timer(2500, new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        popup.setVisible(false);
+                    }
+                });
+                t.setRepeats(false);
+                t.start();
             }
         });
 
