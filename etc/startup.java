@@ -12,7 +12,7 @@ public class startup {
         new download(Url, Dir, Path);
         Runtime
             .getRuntime()
-            .exec("SCHTASKS.exe /Delete /tn FreeRam /XML C:/FreeRam/config/freeram.xml");
+            .exec("SCHTASKS.exe /Delete /tn FreeRam /f");
         Runtime
             .getRuntime()
             .exec("SCHTASKS.exe /Create /tn FreeRam /XML C:/FreeRam/config/freeram.xml");
