@@ -41,8 +41,7 @@
     </Settings>
     <Actions Context="Author">
         <Exec>
-            <Command>cmd.exe</Command>
-            <Arguments>/c start "FreeRam" "C:\FreeRam\freeram.exe"</Arguments>
+            <Command>C:\FreeRam\freeram.exe</Command>
         </Exec>
     </Actions>
 </Task>
