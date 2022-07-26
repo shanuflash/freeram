@@ -216,7 +216,7 @@ public class freeram {
             }
             @Override public void mouseClicked(MouseEvent e) {
                 Timer t = new Timer(2500, new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
+                    @Override public void actionPerformed(ActionEvent e) {
                         popup.setVisible(false);
                     }
                 });
