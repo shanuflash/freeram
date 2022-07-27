@@ -70,19 +70,27 @@ public class freeram {
         f.setIconImage(img1.getImage());
         f.setLocationRelativeTo(null);
         f.setVisible(true);
-
-        //  Label l1
+        
+        //  Label
         JLabel l1 = new JLabel("Change Timings: ");
+        //  Debug: System.out.println("L1= " + l1.getPreferredSize());  
         l1.setFont(new Font("Roboto", Font.PLAIN, 20));
-        //  Debug: System.out.println("L1= " + l1.getPreferredSize());
         l1.setBounds(20, 10, 152, 26);
 
-        //  TextField t1
+        JLabel l2 = new JLabel("Manual Clean:");
+        l2.setFont(new Font("Roboto", Font.PLAIN, 20));
+        l2.setBounds(20, 115, 125, 26);
+
+        JLabel l3 = new JLabel("⚠️ Press the close button to minimize to tray");
+        l3.setFont(new Font("Roboto", Font.PLAIN, 12));
+        l3.setBounds(20, 145, 295, 26);
+
+        //  TextField
         JTextField t1 = new JTextField(timestring);
         t1.setBounds(20, 45, 260, 35);
         t1.setFont(new Font("Roboto", Font.PLAIN, 17));
         t1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            @Override public void actionPerformed(ActionEvent e) {
                 String timestr = t1.getText();
                 try {
                     if (!timestring.equals(timestr)) {
@@ -104,27 +112,22 @@ public class freeram {
             }
         });
 
-        //  CheckBox c1
+        //  CheckBox
         JCheckBox c1 = new JCheckBox("Pause auto clean", pause);
         // System.out.println("c1= " + c1.getPreferredSize());
         c1.setBounds(20, 82, 112, 30);
         c1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            @Override public void actionPerformed(ActionEvent e) {
                 pause = c1.isSelected();
             }
         });
 
-        //  Label l2
-        JLabel l2 = new JLabel("Manual Clean:");
-        l2.setFont(new Font("Roboto", Font.PLAIN, 20));
-        l2.setBounds(20, 115, 125, 26);
-
-        //  Button b1
+        //  Button
         JButton b1 = new JButton("Click Here");
         b1.putClientProperty("JButton.buttonType", "roundRect");
         b1.setBounds(150, 115, 100, 30);
         b1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            @Override public void actionPerformed(ActionEvent e) {
                 try {
                     Runtime
                         .getRuntime()
@@ -135,14 +138,8 @@ public class freeram {
             }
         });
 
-        //  Label l3
-        JLabel l3 = new JLabel("⚠️ Press the close button to minimize to tray");
-        l3.setFont(new Font("Roboto", Font.PLAIN, 12));
-        //  Debug: System.out.println("L1= " + l1.getPreferredSize());
-        l3.setBounds(20, 145, 295, 26);
-
         f.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
+            @Override public void windowClosing(WindowEvent e) {
                 f.setVisible(false);
                 JOptionPane.showMessageDialog(f, "Freeram has been minimized to tray!    ");
             }
@@ -178,7 +175,7 @@ public class freeram {
             awtException.printStackTrace();
         }
 
-        //  Show menu
+        //  Menu items
         JMenuItem show = new JMenuItem("Show");
         show.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
@@ -188,8 +185,7 @@ public class freeram {
         });
         popup.add(show);
 
-        //  Clean menu
-        JMenuItem clean = new JMenuItem("Show");
+        JMenuItem clean = new JMenuItem("Clean");
         clean.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
                 try {
@@ -203,7 +199,6 @@ public class freeram {
         });
         popup.add(clean);
 
-        //  Close menu
         JMenuItem close = new JMenuItem("Close");
         close.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
