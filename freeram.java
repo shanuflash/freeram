@@ -188,6 +188,21 @@ public class freeram {
         });
         popup.add(show);
 
+        //  Clean menu
+        JMenuItem clean = new JMenuItem("Show");
+        clean.addActionListener(new ActionListener() {
+            @Override public void actionPerformed(ActionEvent e) {
+                try {
+                    Runtime
+                        .getRuntime()
+                        .exec("cmd /c C:\\FreeRam\\rammap\\rammap.exe -ew", null);
+                } catch (IOException c) {
+                    c.printStackTrace();
+                }
+            }
+        });
+        popup.add(clean);
+
         //  Close menu
         JMenuItem close = new JMenuItem("Close");
         close.addActionListener(new ActionListener() {
