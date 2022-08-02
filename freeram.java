@@ -206,14 +206,13 @@ public class freeram {
                     }
                 }
             }
-            @Override public void mouseReleased(MouseEvent e) {
+
+            @Override public void mouseClicked(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON3) {
                     popup.setLocation(e.getX() - 80, e.getY() - 50);
                     popup.setInvoker(popup);
                     popup.setVisible(true);
                 }
-            }
-            @Override public void mouseClicked(MouseEvent e) {
                 Timer t = new Timer(2500, new ActionListener() {
                     @Override public void actionPerformed(ActionEvent e) {
                         popup.setVisible(false);
