@@ -1,24 +1,29 @@
 import etc. *;
 
 import java.io. *;
-import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
-import javax.swing. *;
-import java.awt.event. *;
 import java.awt. *;
+import java.awt.event. *;
+import javax.swing. *;
+import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 
 public class freeram {
     public static boolean changed = false;
-    public static boolean first = true;
     public static boolean pause = false;
     public static String timestring;
-    public static String Url = "https://download.sysinternals.com/files/RAMMap.zip";
-    public static String Path = "C:\\FreeRam\\rammap\\RamMap.zip";
-    public static String Dir = "C:\\FreeRam\\rammap\\";
     public static void main(String[] args)throws IOException {
         File fi = new File("C:\\FreeRam\\config\\");
         if (!fi.exists()) {
             fi.mkdirs();
         }
+
+        fi = new File("C:\\FreeRam\\config\\version.ini");
+        if (fi.exists() == false) {
+            fi.createNewFile();
+            FileWriter fw = new FileWriter("C:\\FreeRam\\config\\version.ini");
+            fw.write("2.3");
+            fw.close();
+            new startup();
+        } 
 
         fi = new File("C:\\FreeRam\\config\\freeram.ini");
         if (fi.exists() == false) {
@@ -26,22 +31,6 @@ public class freeram {
             FileWriter fw = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
             fw.write("60");
             fw.close();
-        }
-
-        fi = new File("C:\\FreeRam\\config\\firstrun.ini");
-        if (fi.exists() == false) {
-            fi.createNewFile();
-            FileWriter fw = new FileWriter("C:\\FreeRam\\config\\firstrun.ini");
-            fw.write("1");
-            fw.close();
-        } else {
-            first = false;
-        }
-
-        if (first == true) {
-            new download(Url, Dir, Path);
-            new unzip(Path, Dir);
-            new startup();
         }
 
         BufferedReader br = new BufferedReader(
@@ -70,10 +59,10 @@ public class freeram {
         f.setIconImage(img1.getImage());
         f.setLocationRelativeTo(null);
         f.setVisible(true);
-        
+
         //  Label
         JLabel l1 = new JLabel("Change Timings: ");
-        //  Debug: System.out.println("L1= " + l1.getPreferredSize());  
+        //  Debug: System.out.println("L1= " + l1.getPreferredSize());
         l1.setFont(new Font("Roboto", Font.PLAIN, 20));
         l1.setBounds(20, 10, 152, 26);
 
@@ -131,7 +120,7 @@ public class freeram {
                 try {
                     Runtime
                         .getRuntime()
-                        .exec("cmd /c C:\\FreeRam\\rammap\\rammap.exe -ew", null);
+                        .exec("cmd /c C:\\FreeRam\\bin\\rammap.exe -ew", null);
                 } catch (IOException a) {
                     a.printStackTrace();
                 }
@@ -191,7 +180,7 @@ public class freeram {
                 try {
                     Runtime
                         .getRuntime()
-                        .exec("cmd /c C:\\FreeRam\\rammap\\rammap.exe -ew", null);
+                        .exec("cmd /c C:\\FreeRam\\bin\\rammap.exe -ew", null);
                 } catch (IOException c) {
                     c.printStackTrace();
                 }
@@ -238,14 +227,12 @@ public class freeram {
         //  RAMMAP exec
         Runtime
             .getRuntime()
-            .exec("cmd /c C:\\FreeRam\\rammap\\rammap.exe -ew", null);
+            .exec("cmd /c C:\\FreeRam\\bin\\rammap.exe -ew", null);
         try {
             for (;;) { //infinite
-                BufferedReader br2 = new BufferedReader(
-                    new FileReader("C:\\Freeram\\config\\freeram.ini")
-                );
-                String timestr = br2.readLine();
-                br2.close();
+                br = new BufferedReader(new FileReader("C:\\Freeram\\config\\freeram.ini"));
+                String timestr = br.readLine();
+                br.close();
 
                 int time = Integer.valueOf(timestr);
                 time = time * 60000;
@@ -274,7 +261,7 @@ public class freeram {
 
                 Runtime
                     .getRuntime()
-                    .exec("cmd /c C:\\FreeRam\\rammap\\rammap.exe -ew", null);
+                    .exec("cmd /c C:\\FreeRam\\bin\\rammap.exe -ew", null);
                 changed = false;
             }
         } catch (IOException c) {

@@ -1,4 +1,4 @@
-package etc;
+package etc.deprecated;
 import java.util.zip. *;
 import java.io. *;
 

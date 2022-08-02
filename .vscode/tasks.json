@@ -11,11 +11,12 @@
                 "!${compileOutput}/output/", 
                 "!${compileOutput}/src/", 
                 "!${compileOutput}/lib/", 
+                "!${compileOutput}/bin/", 
+                "!${compileOutput}/etc/deprecated/",
                 "!${compileOutput}/CODE_OF_CONDUCT.md", 
                 "!${compileOutput}/LICENSE", 
                 "!${compileOutput}/README.md",
                 "!${compileOutput}/freeram.manifest",
-                "!${compileOutput}/freeram.xml"
             ],
             "problemMatcher": [],
             "label": "freeram export ezz"
