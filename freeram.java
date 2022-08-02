@@ -4,12 +4,16 @@ import java.io. *;
 import java.awt. *;
 import java.awt.event. *;
 import javax.swing. *;
+import java.util.Scanner;
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 
 public class freeram {
     public static boolean changed = false;
     public static boolean pause = false;
     public static String timestring;
+    public static String version;
+    public static FileWriter fw;
+    public static Scanner sc;
     public static void main(String[] args)throws IOException {
         File fi = new File("C:\\FreeRam\\config\\");
         if (!fi.exists()) {
@@ -17,41 +21,30 @@ public class freeram {
         }
 
         fi = new File("C:\\FreeRam\\config\\version.ini");
-        if (fi.exists() == false) {
+        fw = new FileWriter(fi);
+        if (fi.exists() == false || fi.length() == 0) {
             fi.createNewFile();
-            FileWriter fw = new FileWriter("C:\\FreeRam\\config\\version.ini");
             fw.write("2.3");
             fw.close();
-            Runtime
-                .getRuntime()
-                .exec(
-                    "reg.exe ADD HKCU\\Software\\Sysinternals\\RamMap /v EulaAccepted /t REG_DWORD " +
-                            "/d 1 /f",
-                    null
-                );
-            Runtime
-                .getRuntime()
-                .exec(
-                    "reg.exe ADD HKCU\\Software\\Sysinternals\\RamMap /v OriginalPath /t REG_SZ " +
-                            "/d C:\\FreeRam\\bin\\RAMMap.exe /f",
-                    null
-                );
             new startup();
+        } else {
+            sc = new Scanner(fi);
+            version = sc.nextLine();
+            if (!version.equals("2.3")) {
+                // to-do
+            }
         }
 
         fi = new File("C:\\FreeRam\\config\\freeram.ini");
         if (fi.exists() == false) {
             fi.createNewFile();
-            FileWriter fw = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
+            fw = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
             fw.write("60");
             fw.close();
         }
-
-        BufferedReader br = new BufferedReader(
-            new FileReader("C:\\Freeram\\config\\freeram.ini")
-        );
-        timestring = br.readLine();
-        br.close();
+        sc = new Scanner(fi);
+        timestring = sc.nextLine();
+        sc.close();
 
         //  LAF
         try {
@@ -69,7 +62,7 @@ public class freeram {
         f.setSize(315, 220);
         f.setLayout(null);
         f.setAlwaysOnTop(true);
-        ImageIcon img1 = new ImageIcon("C:\\Freeram\\src\\ram.png");
+        ImageIcon img1 = new ImageIcon("C:\\FreeRam\\src\\ram.png");
         f.setIconImage(img1.getImage());
         f.setLocationRelativeTo(null);
         f.setVisible(true);
@@ -97,10 +90,10 @@ public class freeram {
                 String timestr = t1.getText();
                 try {
                     if (!timestring.equals(timestr)) {
-                        FileWriter fw2 = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
-                        fw2.append(timestr);
+                        fw = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
+                        fw.append(timestr);
                         timestring = timestr;
-                        fw2.close();
+                        fw.close();
                         changed = true;
                         System
                             .out
@@ -168,7 +161,7 @@ public class freeram {
         //  Tray icon
         Image image = Toolkit
             .getDefaultToolkit()
-            .getImage("C:\\Freeram\\src\\ram.png");
+            .getImage("C:\\FreeRam\\src\\ram.png");
         TrayIcon trayIcon = new TrayIcon(image, "FreeRam");
         JPopupMenu popup = new JPopupMenu();
         trayIcon.setImageAutoSize(true);
@@ -243,9 +236,9 @@ public class freeram {
             .exec("cmd /c C:\\FreeRam\\bin\\rammap.exe -ew", null);
         try {
             for (;;) { //infinite
-                br = new BufferedReader(new FileReader("C:\\Freeram\\config\\freeram.ini"));
-                String timestr = br.readLine();
-                br.close();
+                sc = new Scanner(fi);
+                String timestr = sc.nextLine();
+                sc.close();
 
                 int time = Integer.valueOf(timestr);
                 time = time * 60000;
