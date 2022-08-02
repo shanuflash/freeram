@@ -85,6 +85,17 @@ public class freeram {
         JTextField t1 = new JTextField(timestring);
         t1.setBounds(20, 45, 260, 35);
         t1.setFont(new Font("Roboto", Font.PLAIN, 17));
+
+        //  CheckBox
+        JCheckBox c1 = new JCheckBox("Pause auto clean", pause);
+        c1.setBounds(20, 82, 112, 30);
+
+        //  Button
+        JButton b1 = new JButton("Click Here");
+        b1.putClientProperty("JButton.buttonType", "roundRect");
+        b1.setBounds(150, 115, 100, 30);
+
+        //  JFrame events
         t1.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
                 String timestr = t1.getText();
@@ -95,33 +106,19 @@ public class freeram {
                         timestring = timestr;
                         fw.close();
                         changed = true;
-                        System
-                            .out
-                            .println("User input changed to " + timestr);
                     }
                 } catch (IOException f) {
-                    System
-                        .out
-                        .println("An error occurred.");
                     f.printStackTrace();
                 }
             }
         });
 
-        //  CheckBox
-        JCheckBox c1 = new JCheckBox("Pause auto clean", pause);
-        // System.out.println("c1= " + c1.getPreferredSize());
-        c1.setBounds(20, 82, 112, 30);
         c1.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
                 pause = c1.isSelected();
             }
         });
 
-        //  Button
-        JButton b1 = new JButton("Click Here");
-        b1.putClientProperty("JButton.buttonType", "roundRect");
-        b1.setBounds(150, 115, 100, 30);
         b1.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
                 try {
@@ -133,7 +130,7 @@ public class freeram {
                 }
             }
         });
-
+        
         f.addWindowListener(new WindowAdapter() {
             @Override public void windowClosing(WindowEvent e) {
                 f.setVisible(false);
