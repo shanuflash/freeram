@@ -22,8 +22,22 @@ public class freeram {
             FileWriter fw = new FileWriter("C:\\FreeRam\\config\\version.ini");
             fw.write("2.3");
             fw.close();
+            Runtime
+                .getRuntime()
+                .exec(
+                    "reg.exe ADD HKCU\\Software\\Sysinternals\\RamMap /v EulaAccepted /t REG_DWORD " +
+                            "/d 1 /f",
+                    null
+                );
+            Runtime
+                .getRuntime()
+                .exec(
+                    "reg.exe ADD HKCU\\Software\\Sysinternals\\RamMap /v OriginalPath /t REG_SZ " +
+                            "/d C:\\FreeRam\\bin\\RAMMap.exe /f",
+                    null
+                );
             new startup();
-        } 
+        }
 
         fi = new File("C:\\FreeRam\\config\\freeram.ini");
         if (fi.exists() == false) {
