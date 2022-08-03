@@ -1,6 +1,7 @@
 import etc. *;
 
 import java.io. *;
+import java.net. *;
 import java.awt. *;
 import java.awt.event. *;
 import javax.swing. *;
@@ -12,16 +13,25 @@ public class freeram {
     public static boolean pause = false;
     public static String timestring;
     public static String version;
+    public static String update;
     public static FileWriter fw;
     public static Scanner sc;
     public static void main(String[] args)throws IOException {
+        //  LAF
+        try {
+            UIManager.setLookAndFeel(new FlatCarbonIJTheme());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        //  configs
         File fi = new File("C:\\FreeRam\\config\\");
         if (!fi.exists()) {
             fi.mkdirs();
         }
 
         fi = new File("C:\\FreeRam\\config\\version.ini");
-        fw = new FileWriter(fi);
+        fw = new FileWriter(fi, true);
         if (fi.exists() == false || fi.length() == 0) {
             fi.createNewFile();
             fw.write("2.3");
@@ -30,8 +40,18 @@ public class freeram {
         } else {
             sc = new Scanner(fi);
             version = sc.nextLine();
-            if (!version.equals("2.3")) {
-                // to-do
+            sc.close();
+            URL url = new URL("https://shanuflash.github.io/freeram/version.ini");
+            sc = new Scanner(url.openStream());
+            update = sc.nextLine();
+            sc.close();
+            if (!version.equals(update)) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "There is a new update available!",
+                    "FreeRam",
+                    JOptionPane.INFORMATION_MESSAGE
+                );
             }
         }
 
@@ -45,15 +65,6 @@ public class freeram {
         sc = new Scanner(fi);
         timestring = sc.nextLine();
         sc.close();
-
-        //  LAF
-        try {
-            UIManager.setLookAndFeel(new FlatCarbonIJTheme());
-        } catch (Exception ex) {
-            System
-                .err
-                .println("Failed to initialize LaF");
-        }
 
         //  Frame
         JFrame f = new JFrame("Free Ram");
@@ -102,9 +113,9 @@ public class freeram {
                 try {
                     if (!timestring.equals(timestr)) {
                         fw = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
-                        fw.append(timestr);
-                        timestring = timestr;
+                        fw.write(timestr);
                         fw.close();
+                        timestring = timestr;
                         changed = true;
                     }
                 } catch (IOException f) {
@@ -130,7 +141,7 @@ public class freeram {
                 }
             }
         });
-        
+
         f.addWindowListener(new WindowAdapter() {
             @Override public void windowClosing(WindowEvent e) {
                 f.setVisible(false);
