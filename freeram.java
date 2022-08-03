@@ -14,6 +14,7 @@ public class freeram {
     public static String timestring;
     public static String version;
     public static String update;
+    public static int next = 0;
     public static FileWriter fw;
     public static Scanner sc;
     public static void main(String[] args)throws IOException {
@@ -91,6 +92,10 @@ public class freeram {
         l3.setFont(new Font("Roboto", Font.PLAIN, 12));
         l3.setBounds(20, 145, 295, 26);
 
+        JLabel l4 = new JLabel();
+        l4.setFont(new Font("Roboto", Font.PLAIN, 11));
+        l4.setBounds(175, 82, 110, 30);
+
         //  TextField
         JTextField t1 = new JTextField(timestring);
         t1.setBounds(20, 45, 260, 35);
@@ -152,6 +157,7 @@ public class freeram {
         f.add(l1);
         f.add(l2);
         f.add(l3);
+        f.add(l4);
         f.add(t1);
         f.add(c1);
         f.add(b1);
@@ -248,12 +254,17 @@ public class freeram {
                 sc.close();
 
                 int time = Integer.valueOf(timestr);
+                next = time;
                 time = time * 60000;
                 int divtime = time / 1000;
                 int flag = 0;
 
                 while (changed == false) {
                     new wait(1000);
+                    if (flag % 60 == 0) {
+                        l4.setText("Next clean in: " + next + " mins");
+                        next--;
+                    }
                     flag++;
                     if (changed == true) {
                         break;
