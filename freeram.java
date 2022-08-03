@@ -80,7 +80,6 @@ public class freeram {
 
         //  Label
         JLabel l1 = new JLabel("Change Timings: ");
-        //  Debug: System.out.println("L1= " + l1.getPreferredSize());
         l1.setFont(new Font("Roboto", Font.PLAIN, 20));
         l1.setBounds(20, 10, 152, 26);
 
