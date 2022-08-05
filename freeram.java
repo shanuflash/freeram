@@ -14,7 +14,8 @@ public class freeram {
     public static String timestring;
     public static String version;
     public static String update;
-    public static int next = 0;
+    public static int min = 0;
+    public static int sec = 60;
     public static FileWriter fw;
     public static Scanner sc;
     public static void main(String[] args)throws IOException {
@@ -74,8 +75,8 @@ public class freeram {
         f.setSize(315, 220);
         f.setLayout(null);
         f.setAlwaysOnTop(true);
-        ImageIcon img1 = new ImageIcon("C:\\FreeRam\\src\\ram.png");
-        f.setIconImage(img1.getImage());
+        ImageIcon img = new ImageIcon("C:\\FreeRam\\src\\ram.png");
+        f.setIconImage(img.getImage());
         f.setLocationRelativeTo(null);
         f.setVisible(true);
 
@@ -92,9 +93,9 @@ public class freeram {
         l3.setFont(new Font("Roboto", Font.PLAIN, 12));
         l3.setBounds(20, 145, 295, 26);
 
-        JLabel l4 = new JLabel();
+        JLabel l4 = new JLabel("Next clean in: " + timestring + " mins");
         l4.setFont(new Font("Roboto", Font.PLAIN, 11));
-        l4.setBounds(175, 82, 110, 30);
+        l4.setBounds(150, 82, 140, 30);
 
         //  TextField
         JTextField t1 = new JTextField(timestring);
@@ -102,8 +103,8 @@ public class freeram {
         t1.setFont(new Font("Roboto", Font.PLAIN, 17));
 
         //  CheckBox
-        JCheckBox c1 = new JCheckBox("Pause auto clean", pause);
-        c1.setBounds(20, 82, 112, 30);
+        JCheckBox c1 = new JCheckBox("Pause auto clean   |", pause);
+        c1.setBounds(20, 82, 124, 30);
 
         //  Button
         JButton b1 = new JButton("Click Here");
@@ -254,7 +255,7 @@ public class freeram {
                 sc.close();
 
                 int time = Integer.valueOf(timestr);
-                next = time;
+                min = time;
                 time = time * 60000;
                 int divtime = time / 1000;
                 int flag = 0;
@@ -262,9 +263,13 @@ public class freeram {
                 while (changed == false) {
                     new wait(1000);
                     if (flag % 60 == 0) {
-                        l4.setText("Next clean in: " + next + " mins");
-                        next--;
+                        min--;
+                        sec = 59;
+                    } else {
+                        sec--;
                     }
+                    l4.setText("Next clean in: " + min + "m " + sec + "s");
+
                     flag++;
                     if (changed == true) {
                         break;
@@ -272,7 +277,6 @@ public class freeram {
                     if (flag == divtime) {
                         break;
                     }
-
                     while (pause == true) {
                         System
                             .out
