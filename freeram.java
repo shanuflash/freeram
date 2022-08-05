@@ -36,7 +36,7 @@ public class freeram {
         fw = new FileWriter(fi, true);
         if (fi.exists() == false || fi.length() == 0) {
             fi.createNewFile();
-            fw.write("2.3");
+            fw.write("2.4");
             fw.close();
             new startup();
         } else {

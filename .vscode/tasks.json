@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "java",
+            "type": "java (buildArtifact)",
             "mainClass": "freeram",
             "targetPath": "${workspaceFolder}/output/freeram.jar",
             "elements": [
@@ -16,6 +16,7 @@
                 "!${compileOutput}/CODE_OF_CONDUCT.md",
                 "!${compileOutput}/LICENSE",
                 "!${compileOutput}/README.md",
+                "!${compileOutput}/version.ini",
                 "!${compileOutput}/freeram.manifest"
             ],
             "problemMatcher": [],
