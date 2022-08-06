@@ -5,6 +5,7 @@ import java.net. *;
 import java.awt. *;
 import java.awt.event. *;
 import javax.swing. *;
+
 import java.util.Scanner;
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 
@@ -14,6 +15,7 @@ public class freeram {
     public static String timestring;
     public static String version;
     public static String update;
+    public static int time;
     public static int min = 0;
     public static int sec = 60;
     public static FileWriter fw;
@@ -33,9 +35,9 @@ public class freeram {
         }
 
         fi = new File("C:\\FreeRam\\config\\version.ini");
-        fw = new FileWriter(fi, true);
-        if (fi.exists() == false || fi.length() == 0) {
+        if (!fi.exists() || fi.length() == 0) {
             fi.createNewFile();
+            fw = new FileWriter(fi);
             fw.write("2.4");
             fw.close();
             new startup();
@@ -43,6 +45,10 @@ public class freeram {
             sc = new Scanner(fi);
             version = sc.nextLine();
             sc.close();
+            if (!version.equals("2.4")) {
+                fw.write("2.4");
+                fw.close();
+            }
             URL url = new URL("https://shanuflash.github.io/freeram/version.ini");
             sc = new Scanner(url.openStream());
             update = sc.nextLine();
@@ -58,9 +64,9 @@ public class freeram {
         }
 
         fi = new File("C:\\FreeRam\\config\\freeram.ini");
-        if (fi.exists() == false) {
+        if (!fi.exists()) {
             fi.createNewFile();
-            fw = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
+            fw = new FileWriter(fi);
             fw.write("60");
             fw.close();
         }
@@ -114,13 +120,28 @@ public class freeram {
         //  JFrame events
         t1.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
-                String timestr = t1.getText();
+                String jtime = t1.getText();
+                boolean number = true,
+                valid = true;
+
                 try {
-                    if (!timestring.equals(timestr)) {
+                    time = Integer.valueOf(jtime);
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(f, "Please enter only numeric values!");
+                    number = false;
+                }
+
+                if (!((time > 0) && (time <= 720)) && number == true) {
+                    JOptionPane.showMessageDialog(f, "Time has to be > 0 and < 720!");
+                    valid = false;
+                }
+
+                try {
+                    if (!timestring.equals(jtime) && valid == true && number == true) {
                         fw = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
-                        fw.write(timestr);
+                        fw.write(jtime);
                         fw.close();
-                        timestring = timestr;
+                        timestring = jtime;
                         changed = true;
                     }
                 } catch (IOException f) {
@@ -251,10 +272,10 @@ public class freeram {
         try {
             for (;;) { //infinite
                 sc = new Scanner(fi);
-                String timestr = sc.nextLine();
+                timestring = sc.nextLine();
                 sc.close();
 
-                int time = Integer.valueOf(timestr);
+                int time = Integer.valueOf(timestring);
                 min = time;
                 time = time * 60000;
                 int divtime = time / 1000;
