@@ -36,6 +36,7 @@ public class freeram {
         fi = new File("C:\\FreeRam\\config\\version.ini");
         if (!fi.exists() || fi.length() == 0) {
             fi.createNewFile();
+            fw = new FileWriter(fi);
             fw.write("2.4");
             fw.close();
             new startup();
