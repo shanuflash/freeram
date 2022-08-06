@@ -5,7 +5,6 @@ import java.net. *;
 import java.awt. *;
 import java.awt.event. *;
 import javax.swing. *;
-
 import java.util.Scanner;
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 
@@ -37,7 +36,6 @@ public class freeram {
         fi = new File("C:\\FreeRam\\config\\version.ini");
         if (!fi.exists() || fi.length() == 0) {
             fi.createNewFile();
-            fw = new FileWriter(fi);
             fw.write("2.4");
             fw.close();
             new startup();
@@ -46,6 +44,7 @@ public class freeram {
             version = sc.nextLine();
             sc.close();
             if (!version.equals("2.4")) {
+                fw = new FileWriter(fi);
                 fw.write("2.4");
                 fw.close();
             }
