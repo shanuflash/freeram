@@ -187,7 +187,7 @@ public class freeram {
 
         //  System Tray
         if (!SystemTray.isSupported()) {
-            JOptionPane.showMessageDialog(null, "System tray, please report to developer.");
+            JOptionPane.showMessageDialog(f, "System tray, please report to developer.");
         }
         SystemTray systemTray = SystemTray.getSystemTray();
 
