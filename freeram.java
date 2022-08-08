@@ -161,7 +161,7 @@ public class freeram {
                 try {
                     Runtime
                         .getRuntime()
-                        .exec("cmd /c C:\\FreeRam\\bin\\rammap.exe -ew", null);
+                        .exec("C:/FreeRam/bin/rammap.exe -ew");
                 } catch (IOException a) {
                     a.printStackTrace();
                 }
@@ -220,7 +220,7 @@ public class freeram {
                 try {
                     Runtime
                         .getRuntime()
-                        .exec("cmd /c C:\\FreeRam\\bin\\rammap.exe -ew", null);
+                        .exec("C:/FreeRam/bin/rammap.exe -ew");
                 } catch (IOException c) {
                     c.printStackTrace();
                 }
@@ -266,7 +266,7 @@ public class freeram {
         //  RAMMAP exec
         Runtime
             .getRuntime()
-            .exec("cmd /c C:\\FreeRam\\bin\\rammap.exe -ew", null);
+            .exec("C:/FreeRam/bin/rammap.exe -ew");
         try {
             for (;;) { //infinite
                 sc = new Scanner(fi);
@@ -308,7 +308,7 @@ public class freeram {
 
                 Runtime
                     .getRuntime()
-                    .exec("cmd /c C:\\FreeRam\\bin\\rammap.exe -ew", null);
+                    .exec("C:/FreeRam/bin/rammap.exe -ew");
                 changed = false;
             }
         } catch (IOException c) {
