@@ -50,13 +50,24 @@ public class freeram {
                 fw.close();
             }
             URL url = new URL("https://shanuflash.github.io/freeram/version.ini");
-            sc = new Scanner(url.openStream());
-            update = sc.nextLine();
-            sc.close();
-            if (!version.equals(update)) {
+            try {
+                URLConnection connection = url.openConnection();
+                connection.connect();
+                sc = new Scanner(url.openStream());
+                update = sc.nextLine();
+                sc.close();
+                if (!version.equals(update)) {
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "There is a new update available!",
+                        "FreeRam",
+                        JOptionPane.INFORMATION_MESSAGE
+                    );
+                }
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(
                     null,
-                    "There is a new update available!",
+                    "No internet connection, Failed to check for updates!",
                     "FreeRam",
                     JOptionPane.INFORMATION_MESSAGE
                 );
