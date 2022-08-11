@@ -10,7 +10,7 @@ public class updater {
     public static void main(String[] args) throws IOException {
         Runtime
             .getRuntime()
-            .exec("taskkill /F /IM freeram.exe");
+            .exec("taskkill /F /FI \"WindowTitle eq Free Ram\" /T");
         try {
             new download(Url, Dir, Path);
             JOptionPane.showMessageDialog(

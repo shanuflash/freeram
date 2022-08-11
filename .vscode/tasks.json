@@ -7,12 +7,14 @@
             "targetPath": "${workspaceFolder}/output/freeram.jar",
             "elements": [
                 "${compileOutput}",
-                "${dependencies}",
+                "${dependencies}",    
+                "!${compileOutput}/updater.class",
 
                 "!${compileOutput}/output/",
                 "!${compileOutput}/src/",
                 "!${compileOutput}/lib/",
                 "!${compileOutput}/bin/",
+                "!${compileOutput}/etc/download.class",
                 "!${compileOutput}/etc/deprecated/",
 
                 "!${compileOutput}/CODE_OF_CONDUCT.md",
