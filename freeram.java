@@ -28,12 +28,12 @@ public class freeram {
         }
 
         //  configs
-        File fi = new File("C:\\FreeRam\\config\\");
+        File fi = new File("C:/FreeRam/config/");
         if (!fi.exists()) {
             fi.mkdirs();
         }
 
-        fi = new File("C:\\FreeRam\\config\\version.ini");
+        fi = new File("C:/FreeRam/config/version.ini");
         if (!fi.exists() || fi.length() == 0) {
             fi.createNewFile();
             fw = new FileWriter(fi);
@@ -57,6 +57,9 @@ public class freeram {
                 update = sc.nextLine();
                 sc.close();
                 if (!version.equals(update)) {
+                    Runtime
+                        .getRuntime()
+                        .exec("C:/FreeRam/updater.exe");
                     JOptionPane.showMessageDialog(
                         null,
                         "There is a new update available!",
@@ -74,7 +77,7 @@ public class freeram {
             }
         }
 
-        fi = new File("C:\\FreeRam\\config\\freeram.ini");
+        fi = new File("C:/FreeRam/config/freeram.ini");
         if (!fi.exists()) {
             fi.createNewFile();
             fw = new FileWriter(fi);
@@ -92,7 +95,7 @@ public class freeram {
         f.setSize(315, 220);
         f.setLayout(null);
         f.setAlwaysOnTop(true);
-        ImageIcon img = new ImageIcon("C:\\FreeRam\\src\\ram.png");
+        ImageIcon img = new ImageIcon("C:/FreeRam/src/ram.png");
         f.setIconImage(img.getImage());
         f.setLocationRelativeTo(null);
         f.setVisible(true);
@@ -149,7 +152,7 @@ public class freeram {
 
                 try {
                     if (!timestring.equals(jtime) && valid == true && number == true) {
-                        fw = new FileWriter("C:\\FreeRam\\config\\freeram.ini");
+                        fw = new FileWriter("C:/FreeRam/config/freeram.ini");
                         fw.write(jtime);
                         fw.close();
                         timestring = jtime;
@@ -205,7 +208,7 @@ public class freeram {
         //  Tray icon
         Image image = Toolkit
             .getDefaultToolkit()
-            .getImage("C:\\FreeRam\\src\\ram.png");
+            .getImage("C:/FreeRam/src/ram.png");
         TrayIcon trayIcon = new TrayIcon(image, "FreeRam");
         JPopupMenu popup = new JPopupMenu();
         trayIcon.setImageAutoSize(true);

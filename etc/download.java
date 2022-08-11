@@ -1,4 +1,4 @@
-package etc.deprecated;
+package etc;
 
 import java.io. *;
 import java.net. *;
@@ -9,12 +9,7 @@ public class download {
         File zdir = new File(Dir);
         if (!zdir.exists()) 
             zdir.mkdirs();
-        System
-            .out
-            .println("Downloading to " + Path);
-
         URL fetchWebsite = new URL(Url);
-
         ReadableByteChannel readableByteChannel = Channels.newChannel(
             fetchWebsite.openStream()
         );

@@ -8,11 +8,13 @@
             "elements": [
                 "${compileOutput}",
                 "${dependencies}",
+
                 "!${compileOutput}/output/",
                 "!${compileOutput}/src/",
                 "!${compileOutput}/lib/",
                 "!${compileOutput}/bin/",
                 "!${compileOutput}/etc/deprecated/",
+
                 "!${compileOutput}/CODE_OF_CONDUCT.md",
                 "!${compileOutput}/LICENSE",
                 "!${compileOutput}/README.md",
@@ -20,7 +22,33 @@
                 "!${compileOutput}/freeram.manifest"
             ],
             "problemMatcher": [],
-            "label": "freeram export ezz"
+            "label": "freeram export"
+        },
+        {
+            "type": "java (buildArtifact)",
+            "mainClass": "updater",
+            "targetPath": "${workspaceFolder}/output/updater.jar",
+            "elements": [
+                "${compileOutput}",
+                "!${compileOutput}/freeram*",
+
+                "!${compileOutput}/output/",
+                "!${compileOutput}/src/",
+                "!${compileOutput}/lib/",
+                "!${compileOutput}/bin/",
+
+                "!${compileOutput}/etc/wait.class",
+                "!${compileOutput}/etc/startup.class",
+                "!${compileOutput}/etc/deprecated/",
+
+                "!${compileOutput}/CODE_OF_CONDUCT.md",
+                "!${compileOutput}/LICENSE",
+                "!${compileOutput}/README.md",
+                "!${compileOutput}/version.ini",
+                "!${compileOutput}/freeram.manifest",
+            ],
+            "problemMatcher": [],
+            "label": "freeram updater export"
         }
     ]
 }
