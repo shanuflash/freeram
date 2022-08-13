@@ -48,6 +48,7 @@ public class freeram {
                 fw = new FileWriter(fi);
                 fw.write("2.4");
                 fw.close();
+                version = "2.4";
             }
             URL url = new URL("https://shanuflash.github.io/freeram/version.ini");
             try {
