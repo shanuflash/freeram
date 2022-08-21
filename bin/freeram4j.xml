@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- change path on line 6, 7, 16, 17-->
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>C:\Users\shanu\Documents\Programming\Java\freeram\output\freeram.jar</jar>
-  <outfile>C:\Users\shanu\Documents\Programming\Java\freeram\output\freeram.exe</outfile>fd
+  <outfile>C:\Users\shanu\Documents\Programming\Java\freeram\output\freeram.exe</outfile>
   <errTitle>FreeRam - JRE/JDK missing!</errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
   <priority>normal</priority>
   <downloadUrl>https://download.oracle.com/java/18/latest/jdk-18_windows-x64_bin.exe</downloadUrl>
   <supportUrl></supportUrl>
-  <stayAlive>true</stayAlive>
-  <restartOnCrash>false</restartOnCrash>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>true</restartOnCrash>
   <manifest>C:\Users\shanu\Documents\Programming\Java\freeram\freeram.manifest</manifest>
   <icon>C:\Users\shanu\Documents\Programming\Java\freeram\src\ram.ico</icon>
   <jre>
@@ -25,12 +24,12 @@
     <runtimeBits>64/32</runtimeBits>
   </jre>
   <versionInfo>
-    <fileVersion>2.4.0.0</fileVersion>
-    <txtFileVersion>2.4</txtFileVersion>
+    <fileVersion>2.5.0.0</fileVersion>
+    <txtFileVersion>2.5</txtFileVersion>
     <fileDescription>FreeRam</fileDescription>
     <copyright>shanuflash</copyright>
-    <productVersion>2.4.0.0</productVersion>
-    <txtProductVersion>2.4</txtProductVersion>
+    <productVersion>2.5.0.0</productVersion>
+    <txtProductVersion>2.5</txtProductVersion>
     <productName>FreeRam</productName>
     <companyName></companyName>
     <internalName>freeram</internalName>

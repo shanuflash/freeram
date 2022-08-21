@@ -37,18 +37,18 @@ public class freeram {
         if (!fi.exists() || fi.length() == 0) {
             fi.createNewFile();
             fw = new FileWriter(fi);
-            fw.write("2.4");
+            fw.write("2.5");
             fw.close();
             new startup();
         } else {
             sc = new Scanner(fi);
             version = sc.nextLine();
             sc.close();
-            if (!version.equals("2.4")) {
+            if (!version.equals("2.5")) {
                 fw = new FileWriter(fi);
-                fw.write("2.4");
+                fw.write("2.5");
                 fw.close();
-                version = "2.4";
+                version = "2.5";
             }
             URL url = new URL("https://shanuflash.github.io/freeram/version.ini");
             try {
@@ -58,15 +58,15 @@ public class freeram {
                 update = sc.nextLine();
                 sc.close();
                 if (!version.equals(update)) {
-                    Runtime
-                        .getRuntime()
-                        .exec("C:/FreeRam/updater.exe");
                     JOptionPane.showMessageDialog(
                         null,
                         "There is a new update available!",
                         "FreeRam",
                         JOptionPane.INFORMATION_MESSAGE
                     );
+                    Runtime
+                        .getRuntime()
+                        .exec("C:/FreeRam/updater.exe");
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(
@@ -202,7 +202,7 @@ public class freeram {
 
         //  System Tray
         if (!SystemTray.isSupported()) {
-            JOptionPane.showMessageDialog(f, "System tray, please report to developer.");
+            JOptionPane.showMessageDialog(f, "System tray not supported, please report to developer.");
         }
         SystemTray systemTray = SystemTray.getSystemTray();
 
