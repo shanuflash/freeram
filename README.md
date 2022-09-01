@@ -13,7 +13,7 @@ Designed and developed by @shanuflash, This is a tool that helps in lowering RAM
   - Do the above steps before installing the newer version [These steps will be automated in future release]
 - If you are using FreeRam for the first-time or a new PC
   - Download [JDK](https://download.oracle.com/java/18/latest/jdk-18_windows-x64_bin.exe) if you don't have it yet
-  - Download [FreeRam.rar](https://github.com/shanuflash/freeram/releases/download/2.3/FreeRam.rar)
+  - Download [FreeRam.rar](https://github.com/shanuflash/freeram/releases/latest/download/freeram.zip)
   - Extract to `C:\FreeRam`
   - Run `freeram.exe`
 - Folder structure after extraction: 
