@@ -95,7 +95,6 @@ public class freeram {
         f.setLocationByPlatform(true);
         f.setSize(315, 220);
         f.setLayout(null);
-        f.setAlwaysOnTop(true);
         ImageIcon img = new ImageIcon("C:/FreeRam/src/ram.png");
         f.setIconImage(img.getImage());
         f.setLocationRelativeTo(null);
