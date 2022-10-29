@@ -90,6 +90,7 @@ public class freeram {
         sc.close();
 
         //  Frame
+        System.setProperty("sun.java2d.uiScale", "1.0");
         JFrame f = new JFrame("Free Ram");
         f.setResizable(false);
         f.setLocationByPlatform(true);
