@@ -104,19 +104,19 @@ public class freeram {
         //  Label
         JLabel l1 = new JLabel("Change Timings: ");
         l1.setFont(new Font("Roboto", Font.PLAIN, 20));
-        l1.setBounds(20, 10, 152, 26);
+        l1.setBounds(20, 10, 315, 26);
 
         JLabel l2 = new JLabel("Manual Clean:");
         l2.setFont(new Font("Roboto", Font.PLAIN, 20));
-        l2.setBounds(20, 115, 125, 26);
+        l2.setBounds(20, 115, 315, 26);
 
         JLabel l3 = new JLabel("⚠️ Press the close button to minimize to tray");
         l3.setFont(new Font("Roboto", Font.PLAIN, 12));
-        l3.setBounds(20, 145, 295, 26);
+        l3.setBounds(20, 145, 315, 26);
 
         JLabel l4 = new JLabel("Next clean in: " + timestring + " mins");
         l4.setFont(new Font("Roboto", Font.PLAIN, 11));
-        l4.setBounds(150, 82, 140, 30);
+        l4.setBounds(150, 82, 315, 30);
 
         //  TextField
         JTextField t1 = new JTextField(timestring);
@@ -125,7 +125,7 @@ public class freeram {
 
         //  CheckBox
         JCheckBox c1 = new JCheckBox("Pause auto clean   |", pause);
-        c1.setBounds(20, 82, 124, 30);
+        c1.setBounds(20, 82, 315, 30);
 
         //  Button
         JButton b1 = new JButton("Click Here");
