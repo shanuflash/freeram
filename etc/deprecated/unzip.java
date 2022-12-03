@@ -1,11 +1,12 @@
 package etc.deprecated;
-import java.util.zip. *;
-import java.io. *;
+
+import java.util.zip.*;
+import java.io.*;
 
 public class unzip {
     public unzip(String Path, String Dir) {
         File dir = new File(Dir);
-        if (!dir.exists()) 
+        if (!dir.exists())
             dir.mkdirs();
         FileInputStream fis;
         byte[] buffer = new byte[1024];
@@ -16,9 +17,8 @@ public class unzip {
             while (ze != null) {
                 String fileName = ze.getName();
                 File newFile = new File(Dir + File.separator + fileName);
-                System
-                    .out
-                    .println("Unzipping to " + newFile.getAbsolutePath());
+                System.out
+                        .println("Unzipping to " + newFile.getAbsolutePath());
                 new File(newFile.getParent()).mkdirs();
                 FileOutputStream fos = new FileOutputStream(newFile);
                 int len;
@@ -37,8 +37,7 @@ public class unzip {
         }
         File fi = new File(Path);
         fi.delete();
-        System
-            .out
-            .println("Deleting RAMMap.zip");
+        System.out
+                .println("Deleting RAMMap.zip");
     }
 }

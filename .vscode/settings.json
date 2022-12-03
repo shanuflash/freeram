@@ -1,9 +1,6 @@
 {
-    "java.project.referencedLibraries": {
-        "include": [
-            "lib/**/*.jar",
-        ],
-        "exclude": [
-        ]
-    }
+  "java.project.referencedLibraries": {
+    "include": ["lib/**/*.jar"],
+    "exclude": []
+  }
 }

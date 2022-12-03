@@ -1,57 +1,57 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "type": "java (buildArtifact)",
-            "mainClass": "freeram",
-            "targetPath": "${workspaceFolder}/output/freeram.jar",
-            "elements": [
-                "${compileOutput}",
-                "${dependencies}",    
-                "!${compileOutput}/updater.class",
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "java (buildArtifact)",
+      "mainClass": "freeram",
+      "targetPath": "${workspaceFolder}/output/freeram.jar",
+      "elements": [
+        "${compileOutput}",
+        "${dependencies}",
+        "!${compileOutput}/updater.class",
 
-                "!${compileOutput}/output/",
-                "!${compileOutput}/src/",
-                "!${compileOutput}/lib/",
-                "!${compileOutput}/bin/",
-                "!${compileOutput}/etc/download.class",
-                "!${compileOutput}/etc/deprecated/",
+        "!${compileOutput}/output/",
+        "!${compileOutput}/src/",
+        "!${compileOutput}/lib/",
+        "!${compileOutput}/bin/",
+        "!${compileOutput}/etc/download.class",
+        "!${compileOutput}/etc/deprecated/",
 
-                "!${compileOutput}/CODE_OF_CONDUCT.md",
-                "!${compileOutput}/LICENSE",
-                "!${compileOutput}/README.md",
-                "!${compileOutput}/version.ini",
-                "!${compileOutput}/freeram.manifest"
-            ],
-            "problemMatcher": [],
-            "label": "freeram export"
-        },
-        {
-            "type": "java (buildArtifact)",
-            "mainClass": "updater",
-            "targetPath": "${workspaceFolder}/output/updater.jar",
-            "elements": [
-                "${compileOutput}",
-                "${dependencies}",    
-                "!${compileOutput}/freeram*",
+        "!${compileOutput}/CODE_OF_CONDUCT.md",
+        "!${compileOutput}/LICENSE",
+        "!${compileOutput}/README.md",
+        "!${compileOutput}/version.ini",
+        "!${compileOutput}/freeram.manifest"
+      ],
+      "problemMatcher": [],
+      "label": "freeram export"
+    },
+    {
+      "type": "java (buildArtifact)",
+      "mainClass": "updater",
+      "targetPath": "${workspaceFolder}/output/updater.jar",
+      "elements": [
+        "${compileOutput}",
+        "${dependencies}",
+        "!${compileOutput}/freeram*",
 
-                "!${compileOutput}/output/",
-                "!${compileOutput}/src/",
-                "!${compileOutput}/lib/",
-                "!${compileOutput}/bin/",
+        "!${compileOutput}/output/",
+        "!${compileOutput}/src/",
+        "!${compileOutput}/lib/",
+        "!${compileOutput}/bin/",
 
-                "!${compileOutput}/etc/wait.class",
-                "!${compileOutput}/etc/startup.class",
-                "!${compileOutput}/etc/deprecated/",
+        "!${compileOutput}/etc/wait.class",
+        "!${compileOutput}/etc/startup.class",
+        "!${compileOutput}/etc/deprecated/",
 
-                "!${compileOutput}/CODE_OF_CONDUCT.md",
-                "!${compileOutput}/LICENSE",
-                "!${compileOutput}/README.md",
-                "!${compileOutput}/version.ini",
-                "!${compileOutput}/freeram.manifest",
-            ],
-            "problemMatcher": [],
-            "label": "freeram updater export"
-        }
-    ]
+        "!${compileOutput}/CODE_OF_CONDUCT.md",
+        "!${compileOutput}/LICENSE",
+        "!${compileOutput}/README.md",
+        "!${compileOutput}/version.ini",
+        "!${compileOutput}/freeram.manifest"
+      ],
+      "problemMatcher": [],
+      "label": "freeram updater export"
+    }
+  ]
 }

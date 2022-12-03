@@ -1,4 +1,5 @@
 package etc;
+
 import java.lang.Thread;
 
 public class wait {
@@ -7,8 +8,8 @@ public class wait {
             Thread.sleep(ms);
         } catch (InterruptedException ex) {
             Thread
-                .currentThread()
-                .interrupt();
+                    .currentThread()
+                    .interrupt();
         }
     }
 }
