@@ -1,10 +1,10 @@
-import etc. *;
+import etc.*;
 
-import java.io. *;
-import java.net. *;
-import java.awt. *;
-import java.awt.event. *;
-import javax.swing. *;
+import java.io.*;
+import java.net.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import java.util.Scanner;
 import com.formdev.flatlaf.intellijthemes.FlatCarbonIJTheme;
 
@@ -19,15 +19,16 @@ public class freeram {
     public static int sec = 60;
     public static FileWriter fw;
     public static Scanner sc;
-    public static void main(String[] args)throws IOException {
-        //  LAF
+
+    public static void main(String[] args) throws IOException {
+        // LAF
         try {
             UIManager.setLookAndFeel(new FlatCarbonIJTheme());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        //  configs
+        // configs
         File fi = new File("C:/FreeRam/config/");
         if (!fi.exists()) {
             fi.mkdirs();
@@ -59,22 +60,20 @@ public class freeram {
                 sc.close();
                 if (!version.equals(update)) {
                     JOptionPane.showMessageDialog(
-                        null,
-                        "There is a new update available!",
-                        "FreeRam",
-                        JOptionPane.INFORMATION_MESSAGE
-                    );
+                            null,
+                            "There is a new update available!",
+                            "FreeRam",
+                            JOptionPane.INFORMATION_MESSAGE);
                     Runtime
-                        .getRuntime()
-                        .exec("C:/FreeRam/updater.exe");
+                            .getRuntime()
+                            .exec("C:/FreeRam/updater.exe");
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(
-                    null,
-                    "No internet connection, Failed to check for updates!",
-                    "FreeRam",
-                    JOptionPane.INFORMATION_MESSAGE
-                );
+                        null,
+                        "No internet connection, Failed to check for updates!",
+                        "FreeRam",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
         }
 
@@ -89,7 +88,7 @@ public class freeram {
         timestring = sc.nextLine();
         sc.close();
 
-        //  Frame
+        // Frame
         System.setProperty("sun.java2d.uiScale", "1.0");
         JFrame f = new JFrame("Free Ram");
         f.setResizable(false);
@@ -101,7 +100,7 @@ public class freeram {
         f.setLocationRelativeTo(null);
         f.setVisible(true);
 
-        //  Label
+        // Label
         JLabel l1 = new JLabel("Change Timings: ");
         l1.setFont(new Font("Roboto", Font.PLAIN, 20));
         l1.setBounds(20, 10, 315, 26);
@@ -118,26 +117,27 @@ public class freeram {
         l4.setFont(new Font("Roboto", Font.PLAIN, 11));
         l4.setBounds(150, 82, 315, 30);
 
-        //  TextField
+        // TextField
         JTextField t1 = new JTextField(timestring);
         t1.setBounds(20, 45, 260, 35);
         t1.setFont(new Font("Roboto", Font.PLAIN, 17));
 
-        //  CheckBox
+        // CheckBox
         JCheckBox c1 = new JCheckBox("Pause auto clean   |", pause);
         c1.setBounds(20, 82, 315, 30);
 
-        //  Button
+        // Button
         JButton b1 = new JButton("Click Here");
         b1.putClientProperty("JButton.buttonType", "roundRect");
         b1.setBounds(150, 115, 100, 30);
 
-        //  JFrame events
+        // JFrame events
         t1.addActionListener(new ActionListener() {
-            @Override public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 String jtime = t1.getText();
                 boolean number = true,
-                valid = true;
+                        valid = true;
 
                 try {
                     time = Integer.valueOf(jtime);
@@ -166,17 +166,19 @@ public class freeram {
         });
 
         c1.addActionListener(new ActionListener() {
-            @Override public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 pause = c1.isSelected();
             }
         });
 
         b1.addActionListener(new ActionListener() {
-            @Override public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 try {
                     Runtime
-                        .getRuntime()
-                        .exec("C:/FreeRam/bin/rammap.exe -ew");
+                            .getRuntime()
+                            .exec("C:/FreeRam/bin/rammap.exe -ew");
                 } catch (IOException a) {
                     a.printStackTrace();
                 }
@@ -184,13 +186,14 @@ public class freeram {
         });
 
         f.addWindowListener(new WindowAdapter() {
-            @Override public void windowClosing(WindowEvent e) {
+            @Override
+            public void windowClosing(WindowEvent e) {
                 f.setVisible(false);
                 JOptionPane.showMessageDialog(f, "Freeram has been minimized to tray!    ");
             }
         });
 
-        //  Add components
+        // Add components
         f.add(l1);
         f.add(l2);
         f.add(l3);
@@ -200,16 +203,18 @@ public class freeram {
         f.add(b1);
         f.repaint();
 
-        //  System Tray
+        // System Tray
         if (!SystemTray.isSupported()) {
-            JOptionPane.showMessageDialog(f, "System tray not supported, please report to developer.");
+            JOptionPane.showMessageDialog(
+                    f,
+                    "System tray not supported, please report to developer.");
         }
         SystemTray systemTray = SystemTray.getSystemTray();
 
-        //  Tray icon
+        // Tray icon
         Image image = Toolkit
-            .getDefaultToolkit()
-            .getImage("C:/FreeRam/src/ram.png");
+                .getDefaultToolkit()
+                .getImage("C:/FreeRam/src/ram.png");
         TrayIcon trayIcon = new TrayIcon(image, "FreeRam");
         JPopupMenu popup = new JPopupMenu();
         trayIcon.setImageAutoSize(true);
@@ -219,10 +224,11 @@ public class freeram {
             awtException.printStackTrace();
         }
 
-        //  Menu items
+        // Menu items
         JMenuItem show = new JMenuItem("Show");
         show.addActionListener(new ActionListener() {
-            @Override public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 f.setVisible(true);
                 f.repaint();
             }
@@ -231,11 +237,12 @@ public class freeram {
 
         JMenuItem clean = new JMenuItem("Clean");
         clean.addActionListener(new ActionListener() {
-            @Override public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 try {
                     Runtime
-                        .getRuntime()
-                        .exec("C:/FreeRam/bin/rammap.exe -ew");
+                            .getRuntime()
+                            .exec("C:/FreeRam/bin/rammap.exe -ew");
                 } catch (IOException c) {
                     c.printStackTrace();
                 }
@@ -245,15 +252,17 @@ public class freeram {
 
         JMenuItem close = new JMenuItem("Close");
         close.addActionListener(new ActionListener() {
-            @Override public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
         popup.add(close);
 
-        //  Tray events
+        // Tray events
         trayIcon.addMouseListener(new MouseAdapter() {
-            @Override public void mousePressed(MouseEvent e) {
+            @Override
+            public void mousePressed(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON1) {
                     if (e.getClickCount() >= 2) {
                         f.setVisible(true);
@@ -262,14 +271,16 @@ public class freeram {
                 }
             }
 
-            @Override public void mouseClicked(MouseEvent e) {
+            @Override
+            public void mouseClicked(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON3) {
                     popup.setLocation(e.getX() - 80, e.getY() - 50);
                     popup.setInvoker(popup);
                     popup.setVisible(true);
                 }
                 Timer t = new Timer(2500, new ActionListener() {
-                    @Override public void actionPerformed(ActionEvent e) {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
                         popup.setVisible(false);
                     }
                 });
@@ -278,12 +289,12 @@ public class freeram {
             }
         });
 
-        //  RAMMAP exec
+        // RAMMAP exec
         Runtime
-            .getRuntime()
-            .exec("C:/FreeRam/bin/rammap.exe -ew");
+                .getRuntime()
+                .exec("C:/FreeRam/bin/rammap.exe -ew");
         try {
-            for (;;) { //infinite
+            for (;;) { // infinite
                 sc = new Scanner(fi);
                 timestring = sc.nextLine();
                 sc.close();
@@ -312,9 +323,8 @@ public class freeram {
                         break;
                     }
                     while (pause == true) {
-                        System
-                            .out
-                            .print("");
+                        System.out
+                                .print("");
                         if (pause == false) {
                             break;
                         }
@@ -322,8 +332,8 @@ public class freeram {
                 }
 
                 Runtime
-                    .getRuntime()
-                    .exec("C:/FreeRam/bin/rammap.exe -ew");
+                        .getRuntime()
+                        .exec("C:/FreeRam/bin/rammap.exe -ew");
                 changed = false;
             }
         } catch (IOException c) {
