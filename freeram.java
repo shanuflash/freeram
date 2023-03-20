@@ -89,7 +89,6 @@ public class freeram {
         sc.close();
 
         // Frame
-        System.setProperty("sun.java2d.uiScale", "1.0");
         JFrame f = new JFrame("Free Ram");
         f.setResizable(false);
         f.setLocationByPlatform(true);
@@ -215,8 +214,9 @@ public class freeram {
         Image image = Toolkit
                 .getDefaultToolkit()
                 .getImage("C:/FreeRam/src/ram.png");
-        TrayIcon trayIcon = new TrayIcon(image, "FreeRam");
-        JPopupMenu popup = new JPopupMenu();
+        PopupMenu trayPopupMenu = new PopupMenu();
+        TrayIcon trayIcon = new TrayIcon(image, "FreeRam", trayPopupMenu);
+
         trayIcon.setImageAutoSize(true);
         try {
             systemTray.add(trayIcon);
@@ -225,7 +225,7 @@ public class freeram {
         }
 
         // Menu items
-        JMenuItem show = new JMenuItem("Show");
+        MenuItem show = new MenuItem("Show");
         show.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -233,9 +233,9 @@ public class freeram {
                 f.repaint();
             }
         });
-        popup.add(show);
+        trayPopupMenu.add(show);
 
-        JMenuItem clean = new JMenuItem("Clean");
+        MenuItem clean = new MenuItem("clean");
         clean.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -248,16 +248,16 @@ public class freeram {
                 }
             }
         });
-        popup.add(clean);
+        trayPopupMenu.add(clean);
 
-        JMenuItem close = new JMenuItem("Close");
+        MenuItem close = new MenuItem("Close");
         close.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-        popup.add(close);
+        trayPopupMenu.add(close);
 
         // Tray events
         trayIcon.addMouseListener(new MouseAdapter() {
@@ -269,23 +269,6 @@ public class freeram {
                         f.repaint();
                     }
                 }
-            }
-
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getButton() == MouseEvent.BUTTON3) {
-                    popup.setLocation(e.getX() - 80, e.getY() - 50);
-                    popup.setInvoker(popup);
-                    popup.setVisible(true);
-                }
-                Timer t = new Timer(2500, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        popup.setVisible(false);
-                    }
-                });
-                t.setRepeats(false);
-                t.start();
             }
         });
 
