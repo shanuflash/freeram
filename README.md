@@ -19,7 +19,7 @@ Designed and developed by @shanuflash, This is a tool that helps in lowering RAM
 - Folder structure after extraction: 
   - Make sure the following image matches your structure after extracting
  
-![image](https://user-images.githubusercontent.com/39374797/182327174-eb728e48-482f-4595-b198-292cc2f75437.png)
+![image](https://user-images.githubusercontent.com/39374797/230544481-9097f029-7f9e-474e-bf4b-e57d83861873.png)
 
 ## How it works.<br>
 - Windows being the mess that it is uses a completely folly and obselete form of memory management. This program clears the working set memory every hour and frees up ram.
@@ -31,6 +31,6 @@ Designed and developed by @shanuflash, This is a tool that helps in lowering RAM
 - Note down ram usage before running 'FreeRam' and after running it. You'll notice visible decrease in the RAM usage.
 
 ## Screenshots:
-![image](https://user-images.githubusercontent.com/39374797/182327897-18c2a72d-57cf-46bc-ad61-3a25fa82640c.png) ![image](https://user-images.githubusercontent.com/39374797/182328198-94e5a3f2-9bf0-4c68-a740-23ef5d9ba9b1.png) 
+![image](https://user-images.githubusercontent.com/39374797/230544261-64023720-7b82-44a9-9e8d-41bd7b397575.png) ![image](https://user-images.githubusercontent.com/39374797/182328198-94e5a3f2-9bf0-4c68-a740-23ef5d9ba9b1.png) 
 
 Thanks @Microsoft for their amazing tool RAMMap
