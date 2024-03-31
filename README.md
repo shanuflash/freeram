@@ -12,7 +12,7 @@ Designed and developed by @shanuflash, This is a tool that helps in lowering RAM
     - Delete freeram.exe from `shell:startup` [press Win+R and type]
   - Do the above steps before installing the newer version [These steps will be automated in future release]
 - If you are using FreeRam for the first-time or a new PC
-  - Download [JDK](https://download.oracle.com/java/19/latest/jdk-19_windows-x64_bin.msi) if you don't have it yet
+  - Download [JDK](https://download.oracle.com/java/22/latest/jdk-22_windows-x64_bin.exe) if you don't have it yet
   - Download [FreeRam.zip](https://github.com/shanuflash/freeram/releases/latest/download/freeram.zip)
   - Extract to `C:\FreeRam`
   - Run `freeram.exe`
