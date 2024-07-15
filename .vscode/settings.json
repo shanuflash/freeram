@@ -2,5 +2,6 @@
   "java.project.referencedLibraries": {
     "include": ["lib/**/*.jar"],
     "exclude": []
-  }
+  },
+  "discord.enabled": true
 }

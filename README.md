@@ -1,8 +1,6 @@
 # FreeRam
 **You can download free ram? (maybe)**
 
->The software is pretty much stale right now, but it should work as intended. Am planning on making a updated version in a different language (fuck java) sometime soon.
-
 Designed and developed by @shanuflash, This is a tool that helps in lowering RAM usage when you need it the most.
 
 ## Instructions for installation:
