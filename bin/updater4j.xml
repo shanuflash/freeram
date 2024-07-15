@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>C:\Users\shanu\Documents\Programming\Java\freeram\output\updater.jar</jar>
-  <outfile>C:\Users\shanu\Documents\Programming\Java\freeram\output\updater.exe</outfile>
+  <jar>C:\Users\shanu\Documents\Programming\freeram\output\updater.jar</jar>
+  <outfile>C:\Users\shanu\Documents\Programming\freeram\output\updater.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -12,24 +12,22 @@
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
   <restartOnCrash>true</restartOnCrash>
-  <manifest>C:\Users\shanu\Documents\Programming\Java\freeram\freeram.manifest</manifest>
-  <icon>C:\Users\shanu\Documents\Programming\Java\freeram\src\ram.ico</icon>
+  <manifest>C:\Users\shanu\Documents\Programming\freeram\freeram.manifest</manifest>
+  <icon>C:\Users\shanu\Documents\Programming\freeram\src\ram.ico</icon>
   <jre>
-    <path></path>
-    <bundledJre64Bit>false</bundledJre64Bit>
-    <bundledJreAsFallback>false</bundledJreAsFallback>
-    <minVersion>1.0.1</minVersion>
-    <maxVersion></maxVersion>
-    <jdkPreference>preferJre</jdkPreference>
-    <runtimeBits>64/32</runtimeBits>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>true</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion>18.0</minVersion>
+    <maxVersion>22.0.1</maxVersion>
   </jre>
   <versionInfo>
-    <fileVersion>1.0.0.0</fileVersion>
-    <txtFileVersion>1.0</txtFileVersion>
+    <fileVersion>2.0.0.0</fileVersion>
+    <txtFileVersion>2.0</txtFileVersion>
     <fileDescription>FreeRam Updater</fileDescription>
     <copyright>shanuflash</copyright>
-    <productVersion>1.0.0.0</productVersion>
-    <txtProductVersion>1.0</txtProductVersion>
+    <productVersion>2.0.0.0</productVersion>
+    <txtProductVersion>2.0</txtProductVersion>
     <productName>FreeRam Updater</productName>
     <companyName></companyName>
     <internalName>freeram updater</internalName>
@@ -37,11 +35,4 @@
     <trademarks></trademarks>
     <language>ENGLISH_US</language>
   </versionInfo>
-  <messages>
-    <startupErr>An error occurred while starting the application.</startupErr>
-    <bundledJreErr>This application requires a Java Runtime Environment.</bundledJreErr>
-    <jreVersionErr>This application requires a Java Runtime Environment</jreVersionErr>
-    <launcherErr>The registry refers to a nonexistent Java Runtime Environment installation or the runtime is corrupted.</launcherErr>
-    <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
-  </messages>
 </launch4jConfig>

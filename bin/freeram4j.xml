@@ -2,34 +2,32 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>C:\Users\shanu\Documents\Programming\Java\freeram\output\freeram.jar</jar>
-  <outfile>C:\Users\shanu\Documents\Programming\Java\freeram\output\freeram.exe</outfile>
-  <errTitle>FreeRam - JRE/JDK missing!</errTitle>
+  <jar>C:\Users\shanu\Documents\Programming\freeram\output\freeram.jar</jar>
+  <outfile>C:\Users\shanu\Documents\Programming\freeram\output\freeram.exe</outfile>
+  <errTitle>FreeRam - JDK missing!</errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
   <priority>normal</priority>
-  <downloadUrl>https://download.oracle.com/java/18/latest/jdk-18_windows-x64_bin.exe</downloadUrl>
+  <downloadUrl>https://download.oracle.com/java/22/latest/jdk-22_windows-x64_bin.exe</downloadUrl>
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
-  <restartOnCrash>true</restartOnCrash>
-  <manifest>C:\Users\shanu\Documents\Programming\Java\freeram\freeram.manifest</manifest>
-  <icon>C:\Users\shanu\Documents\Programming\Java\freeram\src\ram.ico</icon>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest>C:\Users\shanu\Documents\Programming\freeram\freeram.manifest</manifest>
+  <icon>C:\Users\shanu\Documents\Programming\freeram\src\ram.ico</icon>
   <jre>
-    <path></path>
-    <bundledJre64Bit>false</bundledJre64Bit>
-    <bundledJreAsFallback>false</bundledJreAsFallback>
-    <minVersion>1.0.1</minVersion>
-    <maxVersion></maxVersion>
-    <jdkPreference>preferJre</jdkPreference>
-    <runtimeBits>64/32</runtimeBits>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>true</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion>18.0</minVersion>
+    <maxVersion>22.0.1</maxVersion>
   </jre>
   <versionInfo>
-    <fileVersion>2.5.0.0</fileVersion>
-    <txtFileVersion>2.5</txtFileVersion>
+    <fileVersion>3.0.0.0</fileVersion>
+    <txtFileVersion>3.0</txtFileVersion>
     <fileDescription>FreeRam</fileDescription>
     <copyright>shanuflash</copyright>
-    <productVersion>2.5.0.0</productVersion>
-    <txtProductVersion>2.5</txtProductVersion>
+    <productVersion>3.0.0.0</productVersion>
+    <txtProductVersion>3.0</txtProductVersion>
     <productName>FreeRam</productName>
     <companyName></companyName>
     <internalName>freeram</internalName>
@@ -37,11 +35,4 @@
     <trademarks></trademarks>
     <language>ENGLISH_US</language>
   </versionInfo>
-  <messages>
-    <startupErr>An error occurred while starting the application.</startupErr>
-    <bundledJreErr>This application requires a Java Runtime Environment.</bundledJreErr>
-    <jreVersionErr>This application requires a Java Runtime Environment</jreVersionErr>
-    <launcherErr>The registry refers to a nonexistent Java Runtime Environment installation or the runtime is corrupted.</launcherErr>
-    <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
-  </messages>
 </launch4jConfig>
