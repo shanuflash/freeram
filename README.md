@@ -39,4 +39,4 @@ A lightweight tool that helps lower RAM usage when you need it the most. Rewritt
 - Windows x64 only
 
 ## Screenshots
-<!-- TODO: Add screenshots of the new UI -->
+<img width="430" height="712" alt="image" src="https://github.com/user-attachments/assets/d3115072-fc4b-4423-9af7-3b84b5932e5c" />
