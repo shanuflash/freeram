@@ -1,8 +1,8 @@
-﻿<Window x:Class="FreeRam2.MainWindow"
+<Window x:Class="FreeRam2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
-        Title="FreeRam 2.0 Pro" Height="630" Width="430" 
+        Title="FreeRam 2.0" Height="712" Width="430" 
         Background="#050507" FontFamily="Segoe UI Variable Display" 
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         WindowStyle="None" AllowsTransparency="True">
@@ -64,12 +64,8 @@
 
             <Grid Grid.Row="0" Background="#0D0D14" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
                 <StackPanel Orientation="Horizontal" Margin="20,0" VerticalAlignment="Center">
-                    <Ellipse x:Name="StatusIndicator" Width="10" Height="10" Fill="#00E676" MouseLeftButtonDown="EngineToggle_Click" Cursor="Hand">
-                        <Ellipse.Effect>
-                            <DropShadowEffect Color="#00E676" BlurRadius="12" ShadowDepth="0"/>
-                        </Ellipse.Effect>
-                    </Ellipse>
-                    <TextBlock Text="FREERAM // 2.0 PRO" Foreground="#5A5A70" FontSize="11" FontWeight="Bold" Margin="12,0,0,0" VerticalAlignment="Center" IsHitTestVisible="False"/>
+                    <Ellipse x:Name="StatusIndicator" Width="10" Height="10" Fill="#00E676" MouseLeftButtonDown="EngineToggle_Click" Cursor="Hand" ToolTip="Click to toggle engine on/off"/>
+                    <TextBlock Text="FREERAM // 2.0" Foreground="#5A5A70" FontSize="11" FontWeight="Bold" Margin="12,0,0,0" VerticalAlignment="Center" IsHitTestVisible="False"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -79,7 +75,6 @@
             </Grid>
 
             <StackPanel Grid.Row="1" Margin="30,15,30,25">
-
                 <Grid Margin="0,10,0,30">
                     <Ellipse Width="190" Height="190" Stroke="#151522" StrokeThickness="10"/>
                     <Ellipse Width="190" Height="190" Stroke="#00E676" StrokeThickness="10" StrokeDashArray="12 2" StrokeDashCap="Round">
@@ -87,7 +82,6 @@
                             <DropShadowEffect Color="#00E676" BlurRadius="20" ShadowDepth="0" Opacity="0.4"/>
                         </Ellipse.Effect>
                     </Ellipse>
-
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                         <TextBlock x:Name="RamUsageText" Text="0%" Foreground="White" FontSize="62" FontWeight="ExtraBold" HorizontalAlignment="Center" Margin="0,0,0,-5"/>
                         <TextBlock Text="RAM LOAD" Foreground="#00E676" FontSize="11" FontWeight="Black" HorizontalAlignment="Center"/>
@@ -115,29 +109,42 @@
                 <Border Background="#0F0F18" CornerRadius="15" Padding="20" BorderBrush="#1C1C26" BorderThickness="1">
                     <StackPanel>
                         <TextBlock Text="CORE TRIGGERS" Foreground="#4A4A60" FontSize="10" FontWeight="Black" Margin="0,0,0,20"/>
-
                         <Grid Margin="0,0,0,18">
                             <TextBlock Text="THRESHOLD" Foreground="#8A8A9A" FontSize="11" FontWeight="Bold" VerticalAlignment="Top"/>
                             <TextBlock x:Name="ThresholdText" Text="85%" Foreground="#00E676" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
-                            <Slider x:Name="ThresholdSlider" Margin="0,22,0,0" Minimum="50" Maximum="99" Value="85" ValueChanged="ThresholdSlider_ValueChanged"/>
+                            <Slider x:Name="ThresholdSlider" Margin="0,22,0,0" Minimum="50" Maximum="99" Value="85" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="ThresholdSlider_ValueChanged"/>
                         </Grid>
-
                         <Grid Margin="0,0,0,18">
                             <TextBlock Text="RECOVERY" Foreground="#8A8A9A" FontSize="11" FontWeight="Bold" VerticalAlignment="Top"/>
                             <TextBlock x:Name="RecoveryText" Text="70%" Foreground="#00B0FF" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
-                            <Slider x:Name="RecoverySlider" Margin="0,22,0,0" Minimum="30" Maximum="95" Value="70" ValueChanged="RecoverySlider_ValueChanged"/>
+                            <Slider x:Name="RecoverySlider" Margin="0,22,0,0" Minimum="30" Maximum="95" Value="70" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="RecoverySlider_ValueChanged"/>
                         </Grid>
-
                         <Grid>
                             <TextBlock Text="COOLDOWN" Foreground="#8A8A9A" FontSize="11" FontWeight="Bold" VerticalAlignment="Top"/>
                             <TextBlock x:Name="CooldownText" Text="5m" Foreground="#FF9100" FontSize="11" HorizontalAlignment="Right" FontWeight="Bold"/>
-                            <Slider x:Name="CooldownSlider" Margin="0,22,0,0" Minimum="1" Maximum="30" Value="5" ValueChanged="CooldownSlider_ValueChanged"/>
+                            <Slider x:Name="CooldownSlider" Margin="0,22,0,0" Minimum="1" Maximum="30" Value="5" IsSnapToTickEnabled="True" TickFrequency="1" ValueChanged="CooldownSlider_ValueChanged"/>
                         </Grid>
                     </StackPanel>
                 </Border>
 
                 <Border Background="#0D0D14" CornerRadius="10" Padding="15" Margin="0,25,0,0" BorderBrush="#1C1C26" BorderThickness="1">
-                    <TextBlock x:Name="StatusText" Text="SYSTEM ONLINE" Foreground="#4A4A60" FontSize="11" FontWeight="Black" HorizontalAlignment="Center"/>
+                    <Grid>
+                        <TextBlock x:Name="StatusText" Text="SYSTEM ONLINE" Foreground="#4A4A60" FontSize="11" FontWeight="Black" VerticalAlignment="Center"/>
+                        <Button x:Name="EngineToggleButton" Click="EngineToggleButton_Click" HorizontalAlignment="Right" Cursor="Hand" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="toggleBorder" Background="#00E676" CornerRadius="6" Padding="12,4">
+                                        <TextBlock x:Name="toggleText" Text="ON" Foreground="#0A0A0F" FontSize="10" FontWeight="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="toggleBorder" Property="Opacity" Value="0.8"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
                 </Border>
             </StackPanel>
         </Grid>
