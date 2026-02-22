@@ -96,7 +96,7 @@ namespace FreeRam2
         {
             if (!SingleInstanceMutex.WaitOne(TimeSpan.Zero, true))
             {
-                MessageBox.Show("FreeRam 2.0 is already running.", "FreeRam 2.0",
+                MessageBox.Show("FreeRam is already running.", "FreeRam",
                     MessageBoxButton.OK, MessageBoxImage.Information);
                 Application.Current.Shutdown();
                 return;
@@ -110,7 +110,7 @@ namespace FreeRam2
             {
                 e.Cancel = true;
                 Hide();
-                _trayIcon!.ShowBalloonTip(1500, "FreeRam 2.0", "Still running in the background.", Forms.ToolTipIcon.Info);
+                _trayIcon!.ShowBalloonTip(1500, "FreeRam", "Still running in the background.", Forms.ToolTipIcon.Info);
             };
 
             _monitorTimer = new DispatcherTimer
@@ -131,7 +131,7 @@ namespace FreeRam2
             _trayIcon = new Forms.NotifyIcon
             {
                 Icon = CreateTrayIcon(),
-                Text = "FreeRam 2.0",
+                Text = "FreeRam",
                 Visible = true,
                 ContextMenuStrip = contextMenu
             };
@@ -312,7 +312,7 @@ namespace FreeRam2
         private void Minimize_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            _trayIcon?.ShowBalloonTip(1500, "FreeRam 2.0", "Still running in the background.", Forms.ToolTipIcon.Info);
+            _trayIcon?.ShowBalloonTip(1500, "FreeRam", "Still running in the background.", Forms.ToolTipIcon.Info);
         }
 
         private void ToggleEngine()
